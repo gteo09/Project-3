@@ -1,18 +1,27 @@
 // Requiring path to so we can use relative routes to our HTML files
-var path = require("path");
+const path = require("path");
 //
 // Requiring our custom middleware for checking if a user is logged in
-var isAuthenticated = require("../config/middleware/isAuthenticated");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 //
-module.exports = function(app) {
+// Requiring mysql
+const mysql = require("mysql");
 //
-  app.get("/", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-  });
+module.exports = function(app, connection) {
+//
+  app.get('/', function(req, res) {
+    connection.query('SELECT * FROM user_info', function(err, data) {
+      (err)? res.send(err): res.json({user_info: data});
+    });
+  }); 
+    
+  // OPTION 2  // If the user already has an account send them to the members page
+  // app.get("/", function(req, res) {
+  //   if (req.user) {
+  //     res.redirect("/members");
+  //   }
+  //   res.sendFile(path.join(__dirname, "../public/signup.html"));
+  // });
 //
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page
