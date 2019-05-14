@@ -1,6 +1,6 @@
 // Requiring bcrypt for password hashing. Using the bcrypt-nodejs version as 
 //the regular bcrypt module sometimes causes errors on Windows machines
-const bcrypt = require("bcrypt-nodejs");
+const bcrypt = require("bcryptjs");
 //
 // Creating our User model
 //Set it as export because we will need it required on the server
