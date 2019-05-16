@@ -2,19 +2,10 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 //
-const mysql = require("mysql");
 const bcrypt = require("bcrypt-nodejs");
-const dbconfig = require("./database");
+// const dbconfig = require("./database");
 // const connection = mysql.createConnection(dbconfig.connection);
-
-// connection.query("USE " + dbconfig.database);
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'Reinhole87!',
-//   database: 'passport_demo'
-// });
-
+const connection = require("./database");
 const db = require("../models");
 //
 // module.exports = function(passport) {
@@ -47,7 +38,7 @@ const db = require("../models");
         } else {
           var newUserMysql = {
             username: req.body.username,
-            email: req.body.username,
+            email: req.body.email,
             password: bcrypt.hashSync(req.body.password, null, null)
           };
 

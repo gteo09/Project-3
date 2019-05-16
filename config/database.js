@@ -1,9 +1,10 @@
-module.exports = {
-    'connection': {
-        'host': 'localhost',
-        'user': 'root',
-        'password': ''
-    },
-    'database': 'passport_demo',
-    'user_table': 'user_info'
-}
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+host: 'localhost',
+user: 'root',
+password: 'Reinhole87!',
+database: 'passport_demo'
+});
+
+module.exports = connection;

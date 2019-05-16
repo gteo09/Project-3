@@ -1,5 +1,7 @@
 import React from "react";
 import "./Register.css";
+import Wrapper from "../Wrapper";
+import Navbar from "../Navbar";
 
 const Register = () => (
   <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins register">
