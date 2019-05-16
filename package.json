@@ -15,5 +15,19 @@
   "bugs": {
     "url": "https://github.com/gteo09/Project-3/issues"
   },
-  "homepage": "https://github.com/gteo09/Project-3#readme"
+  "homepage": "https://github.com/gteo09/Project-3#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "sequelize": "^5.8.5"
+  }
 }

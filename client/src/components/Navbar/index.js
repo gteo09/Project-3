@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 
-const Navbar = props => {
+const Navbar = (props) => {
   return (
                 <div className={props.theme}>
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
