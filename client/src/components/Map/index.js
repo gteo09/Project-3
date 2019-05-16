@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "./styles.css"
+const apikey = process.env.GOOGLEAPI
 
 
 class Map extends Component{
@@ -8,9 +9,9 @@ class Map extends Component{
         this.renderMap();
     }
 
-
+;
     renderMap=()=>{
-        loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyB6OceBab84YIQGM0OPCIH89IqydDBckr4&callback=initMap")
+        loadScript("https://maps.googleapis.com/maps/api/js?key="+apikey+"&callback=initMap")
         window.initMap=this.initMap
     }
 
