@@ -12,10 +12,10 @@ const Navbar = props => {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="https://www.google.com/">Profile</a>
+                                <a className="nav-link" href="/profiles/:id">Profile</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="https://www.google.com/">Browse</a>
+                                <a className="nav-link" href="/farmprofiles">Browse Producers</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="https://www.google.com/">About Us</a>

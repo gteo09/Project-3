@@ -3,6 +3,8 @@ import "./App.css";
 //import Wrapper from "./components/Wrapper";
 import Navbar from "./components/Navbar";
 import FarmProfile from "./pages/FarmerProfile";
+import MyProfile from "./pages/MyProfile";
+import AllFarms from "./pages/AllFarms";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 function App() {
@@ -16,9 +18,12 @@ function App() {
             {/* login page */}
             <Route exact path="/login" />
             {/* view all producer profiles */}
-            <Route exact path="/profiles" component= {FarmProfile}/>
+            <Route exact path="/farmprofiles" component={AllFarms} />
+            {/* view specific producer profiles */}
+            <Route exact path="/farmprofiles/:id" component= {FarmProfile}/>
             {/* view specific user profile */}
-            <Route exact path="/profiles/:id" />
+            <Route exact path="/profiles/:id" component={MyProfile} />
+            
         </Switch>
       </div>
     </Router>
