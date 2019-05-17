@@ -1,0 +1,11 @@
+.navbar {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 100%;
+    background-color: rgb(236, 236, 236);
+    font: black;
+    font-size: 20px;
+    float: center;
+    text-align: center;
+    padding: 10px 10px 0x 10px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}

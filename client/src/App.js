@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Register from "./components/Register";
 //import Wrapper from "./components/Wrapper";
 import Navbar from "./components/Navbar";
 import FarmProfile from "./pages/FarmerProfile";
@@ -22,6 +23,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+
   );
 }
 
