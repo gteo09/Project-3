@@ -15,7 +15,7 @@ function App() {
         <Navbar/>
         <Switch>
           {/* intro to website, link to login form */}
-            <Route exact path="/" />
+            <Route exact path="/" component={Register} />
             {/* login page */}
             <Route exact path="/login" />
             {/* view all producer profiles */}
@@ -27,8 +27,10 @@ function App() {
             
         </Switch>
       </div>
+      <div style={{backgroundColor: "grey"}}>
+      <Register/>
+    </div>
     </Router>
-
   );
 }
 
