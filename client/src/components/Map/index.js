@@ -1,28 +1,63 @@
 import React, {Component} from "react";
 import "./styles.css"
-const apikey = process.env.GOOGLEAPI
+
+var apiKey = process.env.GOOGLEAPI
 
 
 class Map extends Component{
 
+  state={
+    openMarker: null
+  }
+
     componentDidMount(){
         this.renderMap();
-    }
+    };
 
-;
+
     renderMap=()=>{
-        loadScript("https://maps.googleapis.com/maps/api/js?key="+apikey+"&callback=initMap")
+        loadScript("https://maps.googleapis.com/maps/api/js?key="+apiKey+"&callback=initMap")
         window.initMap=this.initMap
     }
 
-     initMap= () => {
+    //initializing map
+     initMap = () => {
          const map = new window.google.maps.Map(document.getElementById('map'), 
          {
           center: {lat: -34.397, lng: 150.644},
           zoom: 8
         });
+        
+        //creating info window
+        var infoWindow = new window.google.maps.InfoWindow({
+          content: "Marker Created"
+        })
+
+        //creating marker
+        var marker = new window.google.maps.Marker({
+          position: {lat: -34.397, lng: 150.644},
+          map: map,
+          title: 'Hello World!'
+        });
+
+        //adding event listener for markers
+        marker.addListener("click", () =>{
+          infoWindow.open(map, marker)
+          //this.setState({openMarker:true})
+          console.log(this.state.openMarker)
+        })
+
+        marker.addListener("click", ()=>{
+          console.log(this.state.openMarker)
+            if(this.state.openMarker){
+              infoWindow.close()
+              this.setState({openMarker:false})
+            }
+          }
+        )
+
         return map;
-      }
+      };
 
     render (){
     return (
@@ -42,5 +77,6 @@ function loadScript(url){
         script.defer=true;
         index.parentNode.insertBefore(script,index)
     }
+
 
 export default Map;
