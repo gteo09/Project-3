@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
+import Navbar from "../components/Navbar";
 
 class FarmProfile extends Component {
 
@@ -33,6 +34,7 @@ class FarmProfile extends Component {
 render(){       
     return(
         <div>
+            <Navbar />
             <div className = "container-fluid">
                 <div className ="row">
                     <div className="col-sm">

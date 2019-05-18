@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "./styles.css"
 
-var apiKey = process.env.GOOGLEAPI
+ var apiKey = process.env.GOOGLEAPI
 
 
 class Map extends Component{
