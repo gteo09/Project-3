@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
+import Navbar from "../components/Navbar";
 
 class UserProfile extends Component {
 
@@ -33,6 +34,7 @@ class UserProfile extends Component {
 render(){       
     return(
         <div>
+            <Navbar />
             <h1>Specific user profile</h1>
             <div className = "container-fluid">
                 <div className ="row">

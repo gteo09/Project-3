@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
+import Navbar from "../components/Navbar";
 
 class AllFarms extends Component {
 
@@ -33,6 +34,7 @@ class AllFarms extends Component {
 render(){       
     return(
         <div>
+            <Navbar />
             <h1>Local producers</h1>
             <div className = "row">
                 <div className="col-3">
