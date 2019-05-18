@@ -3,7 +3,7 @@ import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
 
-class FarmProfile extends Component {
+class UserProfile extends Component {
 
     state = {
         //empty object to be filled by api call to database
@@ -35,6 +35,7 @@ render(){
     return(
         <div>
             <Navbar />
+            <h1>Specific user profile</h1>
             <div className = "container-fluid">
                 <div className ="row">
                     <div className="col-sm">
@@ -69,4 +70,4 @@ render(){
     }
 }
 
-export default FarmProfile;
+export default UserProfile;

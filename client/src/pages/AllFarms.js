@@ -3,7 +3,7 @@ import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
 
-class FarmProfile extends Component {
+class AllFarms extends Component {
 
     state = {
         //empty object to be filled by api call to database
@@ -35,26 +35,17 @@ render(){
     return(
         <div>
             <Navbar />
-            <div className = "container-fluid">
-                <div className ="row">
-                    <div className="col-sm">
-                    <h1>this.state.profile.name</h1>
-                    <h1>this.state.profile.image</h1>
-                    <p>this.state.profile.contact</p>
-                    </div>
-                    
-                </div>
-            </div>
+            <h1>Local producers</h1>
             <div className = "row">
                 <div className="col-3">
+                {/* map will display farm locations and have clickable markers with infowindows */}
                     <Map  />
                 </div>
                 <div className="col-2">
                 </div>
                 <div className="col-6">
-                <h1>Our Values</h1>
-                    <p>this.state.profile.description</p>
-                    Products Currently Available
+                <h1>Farms in our Database</h1>
+                    {/* this list will check state and loop over "products array" - will be renamed after hooking up database */}
                     <List>
                         {this.state.profile.products.map(product=>(
                             <ListItem key={product.id} color={product.color} name={product.name}>
@@ -69,4 +60,4 @@ render(){
     }
 }
 
-export default FarmProfile;
+export default AllFarms;
