@@ -1,7 +1,5 @@
 import React from "react";
 import "./Register.css";
-import Wrapper from "../Wrapper";
-import Navbar from "../Navbar";
 
 const Register = () => (
   <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins register">
@@ -12,16 +10,16 @@ const Register = () => (
               <h2 class="title">Registration Info</h2>
               <form method="POST" action="/register">
                   <div className="input-group">
-                      <input className="input--style-3" type="text" placeholder="Restaurant" name="username"></input>
+                      <input className="input--style-3 formInput" type="text" placeholder="Restaurant" name="username"></input>
                   </div>
                   <div className="input-group">
-                      <input className="input--style-3" type="email" placeholder="Email" name="email"></input>
+                      <input className="input--style-3 formInput" type="email" placeholder="Email" name="email"></input>
                   </div>
                   <div className="input-group">
-                      <input className="input--style-3" type="password" placeholder="Password" name="password"></input>
+                      <input className="input--style-3 formInput" type="password" placeholder="Password" name="password"></input>
                   </div>
                   <div className="p-t-10">
-                      <button className="btn btn--pill btn--green" type="register">Register</button>
+                      <button className="btn btn--pill btn--green registerButton" type="register">Register</button>
                   </div>
               </form>
           </div>
