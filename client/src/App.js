@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Register from "./components/Register";
+import Login from "./components/Login";
 import Home from "./pages/Home";
 //import Wrapper from "./components/Wrapper";
 import FarmProfile from "./pages/FarmerProfile";
@@ -14,12 +15,12 @@ function App() {
     <Router>
       <div>
         <Switch>
+          {/* intro to website, link to login form */}
+          <Route exact path="/" component={Login} />
           {/*registering new user*/}
           <Route exact path="/register" component={Register} />
           {/*registering new user*/}
           <Route exact path="/home" component={Home} />
-          {/* login page */}
-          <Route exact path="/login" />
           {/* view all producer profiles */}
           <Route exact path="/farmprofiles" component={AllFarms} />
           {/* view specific producer profiles */}
