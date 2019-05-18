@@ -1,21 +1,27 @@
 import React from "react";
-import "./Navbar.css";
+//import "./Navbar.css";
 
 const Navbar = (props) => {
   return (
                 <div className={props.theme}>
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <a class="navbar-brand" href="#">F00DCH41N$</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                        <a className="navbar-brand" href="https://www.google.com/"><strong>FoodChain</strong></a>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" href="https://www.google.com/">Profile</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"></a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="https://www.google.com/">Browse</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="https://www.google.com/">About Us</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="https://www.google.com/">Log Out</a>
                             </li>
                             </ul>
                         </div>
