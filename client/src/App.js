@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
 import Register from "./components/Register";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 //import Wrapper from "./components/Wrapper";
 import FarmProfile from "./pages/FarmerProfile";
 import MyProfile from "./pages/MyProfile";
 import AllFarms from "./pages/AllFarms";
-import ProducerForm from "./components/ProducerForm"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 function App() {
@@ -25,9 +24,7 @@ function App() {
           {/* view specific producer profiles */}
           <Route exact path="/farmprofiles/:id" component= {FarmProfile}/>
           {/* view specific user profile */}
-          <Route exact path="/profiles/:id" component={MyProfile} />
-          {/* Register a produer */}
-          <Route exact path="/producerform" component={ProducerForm} />           
+          <Route exact path="/profiles/:id" component={MyProfile} />          
         </Switch>
       </div>
     </Router>

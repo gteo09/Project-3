@@ -31,6 +31,7 @@ module.exports = function(app) {
     });
   });
 //
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
@@ -52,4 +53,14 @@ module.exports = function(app) {
       });
     }
   });
+
+//route for getting addresses out of database
+app.get("/api/addresses", function(req, res){
+  db.Farms.findAll({
+    attributes:["address"]
+  }).then(function(dbAddress){
+    res.json(dbAddress)
+  })
+});
+
 };

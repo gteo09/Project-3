@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import "./styles.css"
+import "./styles.css";
+//import axios from "axios";
 
  var apiKey = process.env.GOOGLEAPI
 
@@ -12,13 +13,33 @@ class Map extends Component{
 
     componentDidMount(){
         this.renderMap();
+        //this.getCoords();
     };
 
 
+    // getCoords = (addressArray)=>{
+
+    //   for(var i=0; i<addressArray.length;i++){
+
+    //     axios.get("https://maps.googleapis.com/maps/api/geocode/json",{
+    //             params:{
+    //                 address: addressArray[i],
+    //                 key:"AIzaSyB6OceBab84YIQGM0OPCIH89IqydDBckr4"
+    //             }
+    //         })
+    //         .then(function(response){
+    //             console.log(response)
+    //         })
+    //         .catch(function(error){
+    //             console.log(error)
+    //         })
+    //   }     
+    // };
+
     renderMap=()=>{
-        loadScript("https://maps.googleapis.com/maps/api/js?key="+apiKey+"&callback=initMap")
+        loadScript("https://maps.googleapis.com/maps/api/js?key="+apiKey+"callback=initMap")
         window.initMap=this.initMap
-    }
+    };
 
     //initializing map
      initMap = () => {
