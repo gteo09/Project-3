@@ -1,32 +1,10 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./Register.css";
+import TempImage from "../../images/farmwithwhite.jpg";
+
 
 const Register = () => (
-//   <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins register">
-//   <div class="wrapper wrapper--w780">
-//       <div class="card card-3">
-//           <div class="card-heading"></div>
-//           <div class="card-body">
-//               <h2 class="title">Registration Info</h2>
-//               <form method="POST" action="/register">
-//                   <div className="input-group">
-//                       <input className="input--style-3 formInput" type="text" placeholder="Restaurant" name="username"></input>
-//                   </div>
-//                   <div className="input-group">
-//                       <input className="input--style-3 formInput" type="email" placeholder="Email" name="email"></input>
-//                   </div>
-//                   <div className="input-group">
-//                       <input className="input--style-3 formInput" type="password" placeholder="Password" name="password"></input>
-//                   </div>
-//                   <div className="p-t-10">
-//                       <button className="btn btn--pill btn--green registerButton" type="register">Register</button>
-//                   </div>
-//               </form>
-//           </div>
-//       </div>
-//   </div>
-// </div>
-
 <div className="main">
     <section className="signup">
         <div className="container">
@@ -56,14 +34,13 @@ const Register = () => (
                     </form>
                 </div>
                 <div className="signup-image">
-                    <figure><img src="" alt="sign up image"/></figure>
-                    <a href="/" className="signup-image-link">I am already member</a>
+                    <figure><img src={TempImage} alt=""/></figure>
+                    <Link to="/" className="signup-image-link">I am already member</Link>
                 </div>
             </div>
         </div>
     </section>
 </div>
-
   );
 
 export default Register;

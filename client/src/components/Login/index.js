@@ -1,6 +1,7 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./Login.css";
-// import farmwithwhite from "../../images";
+import TempImage from "../../images/farmwithwhite.jpg";
 
 const Login = () => (
     <div className="main">
@@ -8,8 +9,9 @@ const Login = () => (
             <div className="container">
                 <div className="signin-content">
                     <div className="signin-image">
-                        <figure><img src="" alt="sign up"/></figure>
-                        <a href="/register" className="signup-image-link">Create an account</a>
+                        <figure><img src={TempImage} alt="sign up"/></figure>
+                        Don't have an account?
+                        <Link to="/register"> Click here!</Link>
                     </div>
 
                     <div className="signin-form">

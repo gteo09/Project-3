@@ -3,7 +3,7 @@ import "./Profile.css";
 
 
 const Profile = () => (
-    <div className="main">
+    <div className="mainprofile">
         <form method="POST" action="/submit">
             Restaurant Name:
             <br/>
@@ -29,7 +29,7 @@ const Profile = () => (
             <br/>
             <input type="text" name="email" placeholder="email"/>
             <br/>
-            <input type="submit" name="profile" placeholder="Submit"/>
+            <input type="submit" name="submit" placeholder="Submit"/>
         </form> 
     </div>
 );
