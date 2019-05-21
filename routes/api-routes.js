@@ -117,14 +117,15 @@ module.exports = function(app) {
   app.post("/submit", function(req, res) {
     console.log(req.body);
     db.ProfileInfo.create({
-      name: req.body.username,
+      name: req.body.name,
       cuisine: req.body.cuisine,
       description: req.body.description,
       address: req.body.address,
       phoneNumber: req.body.phoneNumber, 
-      email : req.body.email
-    }).then(function() {
-      // res.redirect(307, "/profile");
+      email : req.body.email,
+      UserId: req.body.userId
+    }).then(function(newProfile) {
+      res.json(newProfile);
     }).catch(function(err) {
       console.log(err);
       res.json(err);
