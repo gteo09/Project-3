@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var mysql = require("mysql");
 //
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -18,7 +19,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/register", function(req, res) {
     console.log(req.body);
-    db.User.create({
+    db.Users.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password
@@ -51,5 +52,82 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+
+  app.get('/user', (req, res) => {
+    db.Users.findAll({
+      include: [
+        {
+          model: db.profileInfo
+        }
+      ]
+    }).then(user=>{
+      const resOBj = user.map(user=> {
+        return Object.assign(
+          {},
+          {
+            user_id: user.id,
+            username: user.username,
+            email: user.email,
+            password: user.password,
+            profileInfo: user.profileInfo
+          }
+        )
+      })
+    }
+    )
+    res.json(resObj)
+  });
+
+
+  //posting user profile info to db
+  // app.post("/api/profileinfo", function(req, res) {
+  //   console.log(req.body);
+  //   db.ProfileInfo.create({
+  //     name: req.body.name,
+  //     cuisine: req.body.cuisine,
+  //     description: req.body.description,
+  //     address: req.body.address,
+  //     phoneNumber: req.body.phoneNumber,
+  //     email: req.body.email,
+  //   }).then(function() {
+  //     res.redirect(307, "/api/profile");
+  //   }).catch(function(err) {
+  //     console.log(err);
+  //     res.json(err);
+  //     // res.status(422).json(err.errors[0].message);
+  //   });
+  // });
+
+  var con= mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "Reinhole87!",
+    database: "passport_demo"
+  });
+
+  // app.post("/submit", function(req, res) {
+  //   var name= req.body.name;
+  //   var cuisine= req.body.cuisine;
+  //   var description = req.body.description;
+  //   var address = req.body.address;
+  //   var phoneNumber = req.body.phoneNumber;
+  //   var email = req.body.email;
+  
+  app.post("/submit", function(req, res) {
+    console.log(req.body);
+    db.ProfileInfo.create({
+      name: req.body.username,
+      cuisine: req.body.cuisine,
+      description: req.body.description,
+      address: req.body.address,
+      phoneNumber: req.body.phoneNumber, 
+      email : req.body.email
+    }).then(function() {
+      // res.redirect(307, "/profile");
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+    });
   });
 };

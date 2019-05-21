@@ -1,10 +1,37 @@
 import React from "react";
 import "./Profile.css";
 
-// const Profile = () => (
-//   <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins profile">
-//     For the love of god, please show up
-// </div>
-//   );
 
-// export default Profile;
+const Profile = () => (
+    <div className="main">
+        <form method="POST" action="/submit">
+            Restaurant Name:
+            <br/>
+            <input type="text" name="name" placeholder="name"/>
+            <br/>
+            Type of Cuisine:
+            <br/>
+            <input type="text" name="cuisine" placeholder="cuisine"/>
+            <br/>
+            Description of Restaurant:
+            <br/>
+            <input type="text" name="description" placeholder="description"/>
+            <br/>
+            Address:
+            <br/>
+            <input type="text" name="address" placeholder="address"/>
+            <br/>
+            Phone Number:
+            <br/>
+            <input type="text" name="phoneNumber" placeholder="phoneNumber"/>
+            <br/>
+            Email:
+            <br/>
+            <input type="text" name="email" placeholder="email"/>
+            <br/>
+            <input type="submit" name="profile" placeholder="Submit"/>
+        </form> 
+    </div>
+);
+
+export default Profile;
