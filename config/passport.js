@@ -42,7 +42,7 @@ const db = require("../models");
             password: bcrypt.hashSync(req.body.password, null, null)
           };
 
-          db.User.create(newUserMysql).then((user) => {
+          db.Users.create(newUserMysql).then((user) => {
             console.log(user);
             return done(null, user);
           })

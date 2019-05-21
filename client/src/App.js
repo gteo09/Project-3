@@ -9,6 +9,7 @@ import MyProfile from "./pages/MyProfile";
 import AllFarms from "./pages/AllFarms";
 import ProducerForm from "./components/ProducerForm"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -16,11 +17,16 @@ function App() {
       <div>
         <Switch>
           {/* intro to website, link to login form */}
-          <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Login} />
+            {/* view all producer profiles */}
+            <Route exact path="/profile" component= {Profile}/>
+            {/* view specific user profile */}
+            <Route exact path="/profiles/:id" />
           {/*registering new user*/}
           <Route exact path="/register" component={Register} />
           {/*registering new user*/}
           <Route exact path="/home" component={Home} />
+          {/* login page */}
           {/* view all producer profiles */}
           <Route exact path="/farmprofiles" component={AllFarms} />
           {/* view specific producer profiles */}
