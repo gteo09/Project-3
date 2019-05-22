@@ -1,5 +1,7 @@
 import React from "react";
 //import "./Navbar.css";
+import { BrowserRouter as Route } from "react-router-dom";
+import AboutUs from "../AboutUs";
 
 const Navbar = () => {
   return (
@@ -18,12 +20,16 @@ const Navbar = () => {
                     <a className="nav-link" href="/farmprofiles">Browse Producers</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="https://www.google.com/">About Us</a>
+                    <a className="nav-link" href="/producerform">Register a Producer</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/aboutus">About Us</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="https://www.google.com/">Log Out</a>
                 </li>
                 </ul>
+                <Route path="/aboutus" component={AboutUs} />
             </div>
         </nav>
     </div>
