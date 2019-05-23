@@ -19,9 +19,9 @@ function App() {
       <div>
         <Switch>
           {/* intro to website, link to login form */}
-            <Route exact path="/" component={LoginUser} />
-            {/* view all producer profiles */}
-            <Route exact path="/profile" component= {Profile}/>
+          <Route exact path="/" component={LoginUser} />
+          {/* view all producer profiles */}
+          <Route exact path="/profile" component= {Profile}/>
           {/*registering new user*/}
           <Route exact path="/register" component={RegisterUser} />
           {/*registering new user*/}
@@ -33,8 +33,6 @@ function App() {
           <Route exact path="/farmprofiles/:id" component= {FarmProfile}/>
           {/* view specific user profile */}
           <Route exact path="/profiles/:id" component={MyProfile} />
-          {/* Register a produer */}
-          {/* <Route exact path="/producerform" component={ProducerForm} />  */}
           {/*Example to mess with*/}
           <Route exact path="/example" component={Example}/> 
           {/*Example to mess with*/}
@@ -46,13 +44,3 @@ function App() {
 }
 
 export default App;
-
-
-// {/* intro to website, link to login form */}
-// <Route exact path="/" component={Home}/>
-// {/* login page */}
-// <Route exact path="/login" component={Login}/>
-// {/* view all producer profiles */}
-// <Route exact path="/profiles" component={Profiles}/>
-// {/* view specific user profile */}
-// <Route exact path="/profiles/:id" component={FarmProfile} />

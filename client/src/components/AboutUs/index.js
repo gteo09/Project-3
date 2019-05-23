@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./AboutUs.css";
 import Gabe from "../../images/gabe.jpg";
 import Justin from "../../images/justin.jpg";

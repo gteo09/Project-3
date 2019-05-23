@@ -20,9 +20,6 @@ const Navbar = () => {
                     <a className="nav-link" href="/farmprofiles">Browse Producers</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/producerform">Register a Producer</a>
-                </li>
-                <li className="nav-item">
                     <a className="nav-link" href="/aboutus">About Us</a>
                 </li>
                 <li className="nav-item">

@@ -12,5 +12,5 @@ export function List({ children }) {
 
 //props only relevant to farmerprofile.js currently
 export function ListItem(props) {
-  return <li className="list-group-item">{props.color}, {props.name}</li>;
+  return <li className="list-group-item">{props.children}</li>;
 }

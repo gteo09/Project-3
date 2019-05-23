@@ -1,83 +1,92 @@
 import React, {Component} from "react";
 import "./styles.css";
-//import axios from "axios";
-
- var apiKey = process.env.GOOGLEAPI
-
+import axios from "axios";
+import API from "../../utils/API"
 
 class Map extends Component{
 
   state={
-    openMarker: null
+    coordinates:[]
   }
 
     componentDidMount(){
-        this.renderMap();
-        //this.getCoords();
+        this.getAddresses();
+        
+        
+       // this.getCoords(this.state.addresses);      
     };
 
+    //loops through db call to get addresses then calls getcoords to get lat, lng values
+    getAddresses = () => {
 
-    // getCoords = (addressArray)=>{
+      API.getInfo().then(res =>{
+        let addressArr = [];
 
-    //   for(var i=0; i<addressArray.length;i++){
+        for(var i =0; i<res.data.length;i++){
 
-    //     axios.get("https://maps.googleapis.com/maps/api/geocode/json",{
-    //             params:{
-    //                 address: addressArray[i],
-    //                 key:"AIzaSyB6OceBab84YIQGM0OPCIH89IqydDBckr4"
-    //             }
-    //         })
-    //         .then(function(response){
-    //             console.log(response)
-    //         })
-    //         .catch(function(error){
-    //             console.log(error)
-    //         })
-    //   }     
-    // };
+          addressArr.push(res.data[i].address)
+        }
+        this.getCoords(addressArr)
+
+      }).catch(err=>console.log(err))
+    }
+
+    //gets lat,lng values from geocode api
+    getCoords = async(arr)=>{
+
+    const longLatArr = await this.fetchAddress(arr);
+
+    this.setState({coordinates:longLatArr}) 
+                this.renderMap();
+      //sets state to an array of pairs of lng/lat coordinates then calls render map
+      
+    };
+
+    fetchAddress = async(arr) => {
+
+      let longLatArr =[];
+
+      for(var i=0;i<arr.length;i++){
+
+        let res = await axios.get("https://maps.googleapis.com/maps/api/geocode/json",{
+                params:{
+                    address: arr[i],
+                    key:"AIzaSyB6OceBab84YIQGM0OPCIH89IqydDBckr4"
+                }
+            })
+            // .then((res) => {
+                longLatArr.push({
+                  latitude: res.data.results[0].geometry.location.lat,
+                  longitude: res.data.results[0].geometry.location.lng
+                })
+        }  
+        return longLatArr;
+    }
 
     renderMap=()=>{
-        loadScript("https://maps.googleapis.com/maps/api/js?key="+apiKey+"callback=initMap")
+        loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyB6OceBab84YIQGM0OPCIH89IqydDBckr4&callback=initMap")
         window.initMap=this.initMap
     };
 
     //initializing map
      initMap = () => {
-         const map = new window.google.maps.Map(document.getElementById('map'), 
+         const myMap = new window.google.maps.Map(document.getElementById('map'), 
          {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: 47.6062, lng: -122.3321},
           zoom: 8
         });
-        
-        //creating info window
-        var infoWindow = new window.google.maps.InfoWindow({
-          content: "Marker Created"
+
+        //console.log("stateCoords: ",this.state.coordinates)
+
+        this.state.coordinates.map(coordinate => {
+
+          var marker = new window.google.maps.Marker({
+            position: {lat: coordinate.latitude, lng: coordinate.longitude},
+            map: myMap
+          });
         })
 
-        //creating marker
-        var marker = new window.google.maps.Marker({
-          position: {lat: -34.397, lng: 150.644},
-          map: map,
-          title: 'Hello World!'
-        });
-
-        //adding event listener for markers
-        marker.addListener("click", () =>{
-          infoWindow.open(map, marker)
-          //this.setState({openMarker:true})
-          console.log(this.state.openMarker)
-        })
-
-        marker.addListener("click", ()=>{
-          console.log(this.state.openMarker)
-            if(this.state.openMarker){
-              infoWindow.close()
-              this.setState({openMarker:false})
-            }
-          }
-        )
-
-        return map;
+        return myMap;
       };
 
     render (){
