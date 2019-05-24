@@ -3,6 +3,7 @@ import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
 import API from "../utils/API";
+import {BrowserRouter as Router, Link, Route} from "react-router-dom"
 
 class AllFarms extends Component {
 
@@ -69,9 +70,9 @@ render(){
                         <List>
                             {this.state.farms.map(farm=>(
                                 <ListItem key={farm.id}>
-                                    <h1>{farm.name}</h1>
-                                    <h1>{farm.address}</h1>
-                                    <a href = {"/farmprofiles/"+farm.id}>{farm.website}</a>
+                                    <Link to={"/farmprofiles/"+farm.id}>{farm.name}</Link>
+                                    <p>{farm.address}</p>
+                                    <a href = {farm.website} target="_blank" rel="noopener noreferrer">{farm.website}</a>
                                 </ListItem>
                             ))}
                         </List>
