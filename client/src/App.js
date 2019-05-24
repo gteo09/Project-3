@@ -9,20 +9,26 @@ import MyProfile from "./pages/MyProfile";
 import AllFarms from "./pages/AllFarms";
 import ProducerForm from "./components/ProducerForm"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Profile from "./components/Profile";
+import CreateProfile from "./pages/CreateProfile";
 import Example from "./pages/Example";
-import AboutUs from "./components/AboutUs"; //will need to change once we figure out how to stick the navbar
-
+import AboutUsPage from "./pages/AboutUsPage"; 
+import Animals from "../src/images/animals.jpg";
+import NotFound from "./components/NotFound";
 
 function App() {
+
+  var sectionStyle = {
+    backgroundImage: `url(${Animals})`
+  }
+
   return (
     <Router>
-      <div>
+        <div style={sectionStyle} className="backgroundimage">
         <Switch>
           {/* intro to website, link to login form */}
             <Route exact path="/" component={LoginUser} />
-            {/* view all producer profiles */}
-            <Route exact path="/profile" component= {Profile}/>
+          {/* view all producer profiles */}
+            <Route exact path="/createprofile" component= {CreateProfile}/>
           {/*registering new user*/}
           <Route exact path="/register" component={RegisterUser} />
           {/*registering new user*/}
@@ -39,7 +45,8 @@ function App() {
           {/*Example to mess with*/}
           <Route exact path="/example" component={Example}/> 
           {/*Example to mess with*/}
-          <Route exact path="/aboutus" component={AboutUs}/>              
+          <Route exact path="/aboutus" component={AboutUsPage}/>      
+          <Route component={NotFound} />
         </Switch>
       </div>
     </Router>

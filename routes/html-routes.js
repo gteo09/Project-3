@@ -7,7 +7,6 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 // Requiring mysql
 const mysql = require("mysql");
 
-
 module.exports = function(app, passport) {
   app.get("/", function(req, res) {
     res.render(""); //what are we rendering
@@ -17,9 +16,15 @@ module.exports = function(app, passport) {
     res.render("", {message:req.flash("loginMessage")}); //where?
   });
 
+  // app.post('/login', 
+  // passport.authenticate('local', { failureRedirect: '/' }),
+  // function(req, res) {
+  //   res.redirect('/farmprofiles');
+  // });
+
   app.post("/login", passport.authenticate("local-login", {
-    successRedirect: "/profile",
-    failureRedirect: "/login", 
+    successRedirect: "/farmprofiles",
+    failureRedirect: "/", 
     failureFlash: true
   }),
     function(req, res) {
@@ -36,7 +41,7 @@ module.exports = function(app, passport) {
     });
 
     app.post("/register", passport.authenticate("local-signup", {
-      successRedirect: "/profile", // create profile page
+      successRedirect: "/createprofile", // create profile page
       failureRedirect: "/register",
       failureFlash: true
     }));
