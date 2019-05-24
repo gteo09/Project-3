@@ -2,6 +2,7 @@
 var db = require("../models");
 var passport = require("../config/passport");
 var mysql = require("mysql");
+var cors = require('cors');
 //
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -100,6 +101,49 @@ app.get("/api/allfarms/:id", function(req, res){
     res.json(resObj)
   });
 
+  //------------------------------
+  //trying out react/nodejs/sql tutorial
+  app.use(cors());
+
+  var connection= mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "Reinhole87!",
+    database: "passport_demo"
+  });
+  
+  app.get('/first', (req, res) => {
+    res.send('go to /profilepage to see profile')
+  });
+
+  //currently not workingb
+  app.get('/profilepage/add', (req, res) => {
+    const { name, cuisine, description, address, phoneNumber, email} = req.query;
+    const INSERT_PRODUCTS_QUERY = `INSERT INTO passport_demo.profileinfos (name, cuisine, description, address, phoneNumber, email) VALUES("${name}", ${cuisine}, ${description}, ${address}, ${phoneNumber}, ${email})`
+    connection.query(INSERT_PRODUCTS_QUERY, (err, results) => {
+      if(err) {
+        return res.send(err)
+      } else {
+        return res.send("successfully added profile")
+      }
+    });
+    res.send("adding profile");
+  });
+
+  //currently not working
+  app.get('/profilepage', (req, res) => {
+    connection.query("SELECT * FROM passport_demo.profileinfos", (err, results) => {
+      if(err) {
+        return res.send(err)
+      } else {
+        return res.json({
+          data: results
+        })
+      }
+    })
+  }); 
+
+  //------------------------------
 
   //posting user profile info to db
   // app.post("/api/profileinfo", function(req, res) {

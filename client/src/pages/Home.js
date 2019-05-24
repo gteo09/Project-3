@@ -5,10 +5,10 @@ const Home =()=>{
     return(
         <div>
             <Navbar />
-            <div className="jumbotron" >
-            <h1 className="display-4">Food Chain</h1>
-                <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <p>It uses utility classNames for typography and spacing to space content out within the larger container.</p>
+            <div className="jumbotron jumbotron-fluid" >
+            <h1 className="display-4 text-dark bg-light">Food Chain</h1>
+                <p className="lead text-dark bg-light" id="jumbotext"> <strong>Food Chain is a marketplace created to connect local business to local farms to promote the use of locally grown ingredients within communities.
+                    With Food Chain users will be able to browse what products local farms currently have, see when those farms are harvesting future products, and browse producer profiles to find other businesses with similar values.</strong></p>
             </div>
             
         </div>

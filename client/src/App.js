@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import "./App.css";
 import RegisterUser from "./pages/RegisterUser";
 import LoginUser from "./pages/LoginUser";
@@ -13,6 +13,75 @@ import Example from "./pages/Example";
 import AboutUsPage from "./pages/AboutUsPage"; 
 import Animals from "../src/images/animals.jpg";
 import NotFound from "./components/NotFound";
+
+// function App() {
+
+// class App extends Component {
+
+//   state = {
+//     profileinfos: [],
+//     profile: {
+//       name: "sample",
+//       cuisine: "cuis",
+//       description: "des",
+//       address: "ad",
+//       phoneNumber: "ph",
+//       email: "em",
+//     }
+//   }
+
+//   componentDidMount() {
+//     this.getProfiles();
+//   }
+
+//   getProfiles = _ => {
+//     fetch('http://localhost:3001/profilepage') 
+//     .then(response => response.json())
+//     .then(response => this.setState({ profileinfos: response.data}))
+//     .catch(err => console.error(err))
+//   }
+
+//   addProfile = _ => {
+//     const {profile} = this.state;
+//     fetch(`http://localhost:3001/profilepage/add?name=${profile.name}&cuisine=${profile.cuisine}`)
+//     .then(response => response.json())
+//     .then(this.getProfiles)
+//     .catch(err => console.error(err))
+//   }
+
+//   renderProfile = ({ id, name}) => <div key={id}>{name}</div>
+
+
+//   render() {
+//     const { profileinfos, profile } = this.state;
+//     return (
+//       <div className="App">
+//         {profileinfos.map(this.renderProfile)}
+//         <div>
+//           <input 
+//             value={profile.name} 
+//             onChange={e => this.setState({ profile: { ... profile, name: e.target.value }})}/>
+//           <input 
+//             value={profile.cuisine}
+//             onChange={e => this.setState({ profile: { ... profile, cuisine: e.target.value }})}/>
+//           <input 
+//             value={profile.description}
+//             onChange={e => this.setState({ profile: { ... profile, description: e.target.value }})}/>
+//           <input 
+//             value={profile.address}
+//             onChange={e => this.setState({ profile: { ... profile, address: e.target.value }})}/>
+//           <input 
+//             value={profile.phoneNumber}
+//             onChange={e => this.setState({ profile: { ... profile, phoneNumber: e.target.value }})}/>
+//           <input 
+//             value={profile.email}
+//             onChange={e => this.setState({ profile: { ... profile, email: e.target.value }})}/>
+//           <button onClick={this.addProfile}>Add profile</button>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
 function App() {
 
@@ -43,11 +112,12 @@ function App() {
           <Route exact path="/example" component={Example}/> 
           {/*Example to mess with*/}
           <Route exact path="/aboutus" component={AboutUsPage}/>      
-          <Route component={NotFound} />
+          {/* <Route component={NotFound} /> */}
         </Switch>
       </div>
     </Router>
   );
 }
+
 
 export default App;
