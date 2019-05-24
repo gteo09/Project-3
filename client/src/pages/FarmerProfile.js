@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
+import API from "../utils/API"
 
 class FarmProfile extends Component {
 
@@ -25,11 +26,17 @@ class FarmProfile extends Component {
     /*this function will grab data from api call and assign to this component's state
     to be accessed to populate the fields below */
 
-// componentDidMount(){
-//     API.getProfile(this.props.match.params.id)
-//     .then(res=>this.setState({profile: res.data}))
-//     .catch(err=>console.log(err))
-// }
+componentDidMount(){
+    console.log("id", this.props.match.params.id)
+    API.findById(this.props.match.params.id)
+    .then(res=>{
+        this.setState({profile: res.data})
+        console.log(res.data)
+        console.log("state",this.state)
+    })
+    .catch(err=>console.log(err))
+
+}
 
 render(){       
     return(
@@ -55,12 +62,12 @@ render(){
                 <h1>Our Values</h1>
                     <p>this.state.profile.description</p>
                     Products Currently Available
-                    <List>
+                    {/* <List>
                         {this.state.profile.products.map(product=>(
                             <ListItem key={product.id} color={product.color} name={product.name}>
                             </ListItem>
                         ))}    
-                    </List>
+                    </List> */}
                 </div>
                 
             </div>

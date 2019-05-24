@@ -7,8 +7,8 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
-import RegisterUser from "../pages/RegisterUser";
-import LoginUser from "../pages/LoginUser";
+//import RegisterUser from "../pages/RegisterUser";
+//import LoginUser from "../pages/LoginUser";
 
 // import "./website/modules/examples/Animation/styles.css";
 

@@ -31,7 +31,9 @@ module.exports = function(app) {
       // res.status(422).json(err.errors[0].message);
     });
   });
+
 //
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
@@ -53,6 +55,25 @@ module.exports = function(app) {
       });
     }
   });
+
+//route for getting all info from farms out of database
+app.get("/api/allfarms", function(req, res){
+  db.Farms.findAll().then(function(dbfarms){
+    res.json(dbfarms)
+  })
+});
+
+//route for getting info for farm with specific id
+app.get("/api/allfarms/:id", function(req, res){
+  console.log("found log", req.params.id)
+  db.Farms.findAll(
+    {where:{
+    id:req.params.id
+  }}).then(function(farm){
+    console.log("our farm",farm)
+    res.json(farm)
+  });
+});
 
   app.get('/user', (req, res) => {
     db.Users.findAll({

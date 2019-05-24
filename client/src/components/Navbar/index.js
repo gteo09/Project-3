@@ -1,6 +1,6 @@
 import React from "react";
 //import "./Navbar.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Route } from "react-router-dom";
 import AboutUs from "../AboutUs";
 
 const Navbar = () => {
@@ -23,6 +23,7 @@ const Navbar = () => {
                     <a className="nav-link" href="/savedfarms">Saved Farms</a>
                 </li>
                 <li className="nav-item">
+
                     <a className="nav-link" href="/aboutus">About Us</a>
                 </li>
                 <li className="nav-item">
