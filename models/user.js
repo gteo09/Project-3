@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Users.associate = models => {
-    Users.hasOne(models.ProfileInfo);
+    Users.hasOne(models.ProfileInfo, {foreignKey: 'id'});
   }
   // User.findAll({
   //   include: [{model: model.profile, as: 'profile'}]

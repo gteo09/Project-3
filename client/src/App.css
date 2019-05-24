@@ -4,8 +4,8 @@ body, html {
 }
 
 .backgroundimage {
-    height: 100%;
+    /* height: 100%; */
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
 }

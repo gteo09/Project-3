@@ -14,19 +14,22 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                 <li className="nav-item">
-                    <a className="nav-link" href="/profiles/:id">Profile</a>
+                    <a className="nav-link" href="/profiles/:id">Your Profile</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/farmprofiles">Browse Producers</a>
+                    <a className="nav-link" href="/farmprofiles">Browse Farms</a>
                 </li>
                 <li className="nav-item">
+                    <a className="nav-link" href="/savedfarms">Saved Farms</a>
+                </li>
+                <li className="nav-item">
+
                     <a className="nav-link" href="/aboutus">About Us</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="https://www.google.com/">Log Out</a>
+                    <a className="nav-link" href="/logout">Log Out</a>
                 </li>
                 </ul>
-                <Route path="/aboutus" component={AboutUs} />
             </div>
         </nav>
     </div>

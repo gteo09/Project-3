@@ -16,14 +16,14 @@ const Login = () => (
 
                     <div className="signin-form">
                         <h2 className="form-title">Sign in</h2>
-                        <form method="POST" className="register-form" id="login-form">
+                        <form method="POST" className="register-form" id="login-form" action="/login">
                             <div className="form-group">
-                                <label for="your_name"><i className="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                                <label for="username"><i className="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Your Name"/>
                             </div>
                             <div className="form-group">
-                                <label for="your_pass"><i className="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                <label for="password"><i className="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password"/>
                             </div>
                             <div className="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" className="agree-term" />

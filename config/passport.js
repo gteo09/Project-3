@@ -1,3 +1,5 @@
+var User = require("../models/user");
+
 //we import passport packages required for authentication
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
@@ -69,21 +71,37 @@ const db = require("../models");
         passReqToCallback : true
       },
       function(req, username, password, done) {
+        console.log(username);
         connection.query("SELECT * FROM users WHERE username = ? ", [username],
         function(err, rows) {
-          if(err)
+          console.log(rows[0]);
+          if(err) {
           return done(err);
+          }
           if(!rows.length){
             return done(null, false, req.flash("loginMessage", "No User Found"));
           }
-          if(!bcrypt.compareSync(password, rows[0].password))
-          
-          return done(null, false, req.flash("loginMessage", "Wrong Password"));
-        
+          console.log(!bcrypt.compareSync(password, rows[0].password));
+          if (!bcrypt.compareSync(password, rows[0].password)) {
+            console.log(password);
+            return done(null, false, req.flash("loginMessage", "Wrong Password"));
+          }
+      
           return done(null, rows[0]);
         });
       })
     );
+
+    // passport.use(new LocalStrategy(
+    //   function(username, password, done) {
+    //     User.findOne({ username: username }, function (err, user) {
+    //       if (err) { return done(err); }
+    //       if (!user) { return done(null, false); }
+    //       if (!user.verifyPassword(password)) { return done(null, false); }
+    //       return done(null, user);
+    //     });
+    //   }
+    // ));
   // }
   module.exports = passport;
  
