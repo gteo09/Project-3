@@ -1,0 +1,12 @@
+#footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fac5;
+    color: black;
+    text-align: center;
+}
+
+#footercopywright {
+    background-color: rgb(255, 227, 227);
+}

@@ -4,8 +4,8 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
-// require("./config/passport");
+var passport = require("passport");
+require("./config/passport")(passport);
 
 const flash = require("connect-flash");
 // Requiring mysql
@@ -27,7 +27,7 @@ app.use(express.static("public"));
 // We need to use sessions to keep track of our user's login status
 app.use(session({ 
   secret: "justasecret", 
-  resave: true, 
+  resave: true, //might need to change
   saveUninitialized: true 
 }));
 
@@ -64,6 +64,10 @@ if (process.env.NODE_ENV === "test") {
 // Syncing our database and logging a message to the user upon success - Uncomment to see error in terminal
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+    console.log(
+      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", 
+      PORT, 
+      PORT
+      );
   });
 });

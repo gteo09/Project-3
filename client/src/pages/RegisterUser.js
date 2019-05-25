@@ -22,7 +22,7 @@ class RegisterUser extends Component {
 
     return (
       <div style={sectionStyle} className="backgroundimage">
-        <Navbar fixed="top"/>
+        {/* <Navbar fixed="top"/> */}
         <Register/>
       </div>
     );
