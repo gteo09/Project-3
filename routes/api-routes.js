@@ -108,7 +108,7 @@ app.get("/api/allfarms/:id", function(req, res){
   var connection= mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Reinhole87!",
+    password: "",
     database: "passport_demo"
   });
   

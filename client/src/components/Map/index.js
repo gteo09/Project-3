@@ -13,7 +13,7 @@ componentDidMount(){
     this.getAddresses();      
 };
 
-//loops through db call to get addresses then calls getcoords to get lat, lng values
+//loops through db call to get addresses and names then calls getcoords to get lat, lng values
 getAddresses = () => {
 
   API.getInfo().then(res =>{
@@ -21,7 +21,11 @@ getAddresses = () => {
 
     for(var i =0; i<res.data.length;i++){
 
-      addressArr.push(res.data[i].address)
+      addressArr.push({
+        address:res.data[i].address,
+        name:res.data[i].name
+      })
+
     }
     this.getCoords(addressArr)
 
@@ -35,9 +39,8 @@ const longLatArr = await this.fetchAddress(arr);
 
 //sets state to an array of pairs of lng/lat coordinates then calls render map
 this.setState({coordinates:longLatArr}) 
-            this.renderMap();
-  
-  
+this.renderMap();
+   
 };
 
 fetchAddress = async(arr) => {
@@ -52,11 +55,13 @@ fetchAddress = async(arr) => {
                 key:"AIzaSyB6OceBab84YIQGM0OPCIH89IqydDBckr4"
             }
         })
-          longLatArr.push({
-            latitude: res.data.results[0].geometry.location.lat,
-            longitude: res.data.results[0].geometry.location.lng
-          })
-    } 
+
+    longLatArr.push({
+      latitude: res.data.results[0].geometry.location.lat,
+      longitude: res.data.results[0].geometry.location.lng,
+      name: arr[i].name
+    })
+  } 
     return longLatArr;
 }
 
@@ -69,34 +74,68 @@ renderMap=()=>{
 initMap = () => {
 
     // if longitude and latitude are received from props init map with map centered on prop coordinates
-  if(this.props.lat && this.props.lng){
+  if(this.props.lat && this.props.lng && this.props.name){
 
     const myMap = new window.google.maps.Map(document.getElementById('map'), 
       {
       center: {lat: this.props.lat, lng: this.props.lng},
       zoom: 8
     });
+
       //create marker with coordinates from props
       var marker = new window.google.maps.Marker({
         position: {lat: this.props.lat, lng: this.props.lng},
         map: myMap
       });
 
+      //create infoWindow
+      var infoWindow = new window.google.maps.InfoWindow({
+        content: this.props.name
+      })
+
+      marker.addListener("click", function(){
+        //open infowindow
+        infoWindow.open(myMap,marker)
+      })
+
     return myMap;
     
   }
   //else return a google map centered on Seattle
   else{
+
     const myMap = new window.google.maps.Map(document.getElementById('map'), 
       {
       center: {lat: 47.6062, lng: -122.3321},
       zoom: 8
     });
 
-    return myMap;
+    //make an infowindow
+    var infoWindow = new window.google.maps.InfoWindow();
 
-  }
+    //looping over coordinates to make markers
+    this.state.coordinates.map(coordinate=>{
+
+      var contentString = `${coordinate.name}`
+
+      var marker = new window.google.maps.Marker({
+        position: {lat: coordinate.latitude, lng: coordinate.longitude},
+        map: myMap
+      });
     
+
+      //click a marker
+      marker.addListener("click", function(){
+
+        //set content of infowindow
+        infoWindow.setContent(contentString)
+
+        //open infowindow
+        infoWindow.open(myMap,marker)
+      })
+    });
+    return myMap;
+  }   
 };
 
     render (){
