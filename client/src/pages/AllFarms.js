@@ -54,7 +54,7 @@ class AllFarms extends Component {
 render(){       
     return(
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <h1>Local producers</h1>
             <div className = "row">
                 <div className="col-3">

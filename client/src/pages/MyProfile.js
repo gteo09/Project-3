@@ -34,7 +34,7 @@ class UserProfile extends Component {
 render(){       
     return(
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <h1>Specific user profile</h1>
             <div className = "container-fluid">
                 <div className ="row">

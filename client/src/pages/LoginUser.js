@@ -21,7 +21,7 @@ class LoginUser extends Component {
   
     return (
         <div style={sectionStyle} className="backgroundimage">
-            <Navbar/>
+            {/* <Navbar/> */}
             <Login/>
         </div>
     );
