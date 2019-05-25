@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
 
@@ -48,7 +47,6 @@ render(){
             </div>
             <div className = "row">
                 <div className="col-3">
-                    <Map  />
                 </div>
                 <div className="col-2">
                 </div>

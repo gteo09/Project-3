@@ -57,6 +57,7 @@ module.exports = function(app) {
     }
   });
 
+
 //route for getting all info from farms out of database
 app.get("/api/allfarms", function(req, res){
   db.Farms.findAll().then(function(dbfarms){
@@ -66,15 +67,24 @@ app.get("/api/allfarms", function(req, res){
 
 //route for getting info for farm with specific id
 app.get("/api/allfarms/:id", function(req, res){
-  console.log("found log", req.params.id)
   db.Farms.findAll(
     {where:{
     id:req.params.id
   }}).then(function(farm){
-    console.log("our farm",farm)
     res.json(farm)
   });
 });
+
+//post route for updating your personal profile
+app.post("/api/update/:id", function(req, res){
+  db.ProfileInfo.findOneAndUpdate({id:req.parmams.id}, req.body)
+  .then(dbInfo =>res.json(dbInfo))
+  .catch(err=>(console.log(err)))
+})
+
+
+
+
 
   app.get('/user', (req, res) => {
     db.Users.findAll({
