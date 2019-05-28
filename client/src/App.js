@@ -92,7 +92,7 @@ function App() {
   }
 
   return (
-    <h>
+  <React.Fragment>
     <Router>
       <Navbar/>
         <Switch>
@@ -121,7 +121,7 @@ function App() {
         </Switch>
         <Footer/>
     </Router>
-    </h>
+  </React.Fragment>
   );
 }
 

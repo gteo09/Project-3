@@ -28,7 +28,7 @@ module.exports = function(passport) {
       },
       function(req, email, password, done) {
         process.nextTick(function() {
-          db.User.findOne({
+          db.User.findOne({ 
             where: {
               email: email
             }

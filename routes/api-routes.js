@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
-var passport = require("../config/passport");
+//var passport = require("../config/passport");
+var passport = require("passport")
 var mysql = require("mysql");
 var cors = require('cors');
 //
@@ -57,6 +58,7 @@ module.exports = function(app) {
     }
   });
 
+
 //route for getting all info from farms out of database
 app.get("/api/allfarms", function(req, res){
   db.Farms.findAll().then(function(dbfarms){
@@ -66,15 +68,24 @@ app.get("/api/allfarms", function(req, res){
 
 //route for getting info for farm with specific id
 app.get("/api/allfarms/:id", function(req, res){
-  console.log("found log", req.params.id)
   db.Farms.findAll(
     {where:{
     id:req.params.id
   }}).then(function(farm){
-    console.log("our farm",farm)
     res.json(farm)
   });
 });
+
+//post route for updating your personal profile
+app.post("/api/update/:id", function(req, res){
+  db.ProfileInfo.findOneAndUpdate({id:req.parmams.id}, req.body)
+  .then(dbInfo =>res.json(dbInfo))
+  .catch(err=>(console.log(err)))
+})
+
+
+
+
 
   app.get('/user', (req, res) => {
     db.Users.findAll({
@@ -103,45 +114,45 @@ app.get("/api/allfarms/:id", function(req, res){
 
   //------------------------------
   //trying out react/nodejs/sql tutorial
-  app.use(cors());
+  // app.use(cors());
 
-  var connection= mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Reinhole87!",
-    database: "passport_demo"
-  });
+  // var connection= mysql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "",
+  //   database: "passport_demo"
+  // });
   
-  app.get('/first', (req, res) => {
-    res.send('go to /profilepage to see profile')
-  });
+  // app.get('/first', (req, res) => {
+  //   res.send('go to /profilepage to see profile')
+  // });
 
-  //currently not workingb
-  app.get('/profilepage/add', (req, res) => {
-    const { name, cuisine, description, address, phoneNumber, email} = req.query;
-    const INSERT_PRODUCTS_QUERY = `INSERT INTO passport_demo.profileinfos (name, cuisine, description, address, phoneNumber, email) VALUES("${name}", ${cuisine}, ${description}, ${address}, ${phoneNumber}, ${email})`
-    connection.query(INSERT_PRODUCTS_QUERY, (err, results) => {
-      if(err) {
-        return res.send(err)
-      } else {
-        return res.send("successfully added profile")
-      }
-    });
-    res.send("adding profile");
-  });
+  // //currently not workingb
+  // app.get('/profilepage/add', (req, res) => {
+  //   const { name, cuisine, description, address, phoneNumber, email} = req.query;
+  //   const INSERT_PRODUCTS_QUERY = `INSERT INTO passport_demo.profileinfos (name, cuisine, description, address, phoneNumber, email) VALUES("${name}", ${cuisine}, ${description}, ${address}, ${phoneNumber}, ${email})`
+  //   connection.query(INSERT_PRODUCTS_QUERY, (err, results) => {
+  //     if(err) {
+  //       return res.send(err)
+  //     } else {
+  //       return res.send("successfully added profile")
+  //     }
+  //   });
+  //   res.send("adding profile");
+  // });
 
-  //currently not working
-  app.get('/profilepage', (req, res) => {
-    connection.query("SELECT * FROM passport_demo.profileinfos", (err, results) => {
-      if(err) {
-        return res.send(err)
-      } else {
-        return res.json({
-          data: results
-        })
-      }
-    })
-  }); 
+  // //currently not working
+  // app.get('/profilepage', (req, res) => {
+  //   connection.query("SELECT * FROM passport_demo.profileinfos", (err, results) => {
+  //     if(err) {
+  //       return res.send(err)
+  //     } else {
+  //       return res.json({
+  //         data: results
+  //       })
+  //     }
+  //   })
+  // }); 
 
   //------------------------------
 
@@ -167,7 +178,7 @@ app.get("/api/allfarms/:id", function(req, res){
   var con= mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Reinhole87!",
+    password: "",
     database: "passport_demo"
   });
 

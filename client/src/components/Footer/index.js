@@ -42,8 +42,8 @@ const Footer = () => (
                         </ul>
                     </div>
                 </div>
-            <div class="footer-copyright text-center py-3" id="footercopywright">© 2018 Copyright:
-                <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+            <div class="footer-copyright text-center py-3" id="footercopywright">© 2019 Copyright:
+                <p>Gabriel Teotonio and Justin Graffeo</p>
             </div>
         </footer>
     </div>
