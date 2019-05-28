@@ -40,11 +40,14 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Users.associate = models => {
-    Users.hasOne(models.ProfileInfos) 
-    //   {foreignKey: 'ownerUuid'});
-      // {foreignKey: 'id'});
-    
-  };
+    Users.hasOne(models.ProfileInfo, 
+      // {foreignKey: 'ownerUuid'});
+    )}
+  // User.findAll({
+  //   include: [{model: model.profile, as: 'profile'}]
+  // }).then(function(result) {
+  //   console.log(JSON.stringify(result));
+  // });
 
   // Creating a custom method for our User model. 
   //This will check if an unhashed password entered by the 

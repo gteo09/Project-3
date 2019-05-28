@@ -4,8 +4,8 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 // Requiring passport as we've configured it
-// var passport = require("passport");
-var passport = require("./config/passport");
+var passport = require("passport");
+// require("./config/passport")(passport);
 
 const flash = require("connect-flash");
 // Requiring mysql

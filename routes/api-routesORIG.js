@@ -1,15 +1,14 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-// var passport = require("passport");
 var mysql = require("mysql");
-// var cors = require('cors');
+var cors = require('cors');
 //
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local-login"), function(req, res) {
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
@@ -81,7 +80,7 @@ app.get("/api/allfarms/:id", function(req, res){
     db.Users.findAll({
       include: [
         {
-          model: db.ProfileInfos
+          model: db.profileInfo
         }
       ]
     }).then(user=>{
@@ -93,7 +92,7 @@ app.get("/api/allfarms/:id", function(req, res){
             username: user.username,
             email: user.email,
             password: user.password,
-            ProfileInfos: user.ProfileInfos
+            profileInfo: user.profileInfo
           }
         )
       })
@@ -102,12 +101,75 @@ app.get("/api/allfarms/:id", function(req, res){
     res.json(resObj)
   });
 
-  var con= mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Reinhole87!",
-    database: "passport_demo"
-  });
+  //------------------------------
+  //trying out react/nodejs/sql tutorial
+  // app.use(cors());
+
+  // var connection= mysql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "Reinhole87!",
+  //   database: "passport_demo"
+  // });
+  
+  // app.get('/first', (req, res) => {
+  //   res.send('go to /profilepage to see profile')
+  // });
+
+  //currently not workingb
+  // app.get('/profilepage/add', (req, res) => {
+  //   const { name, cuisine, description, address, phoneNumber, email} = req.query;
+  //   const INSERT_PRODUCTS_QUERY = `INSERT INTO passport_demo.profileinfos (name, cuisine, description, address, phoneNumber, email) VALUES("${name}", ${cuisine}, ${description}, ${address}, ${phoneNumber}, ${email})`
+  //   connection.query(INSERT_PRODUCTS_QUERY, (err, results) => {
+  //     if(err) {
+  //       return res.send(err)
+  //     } else {
+  //       return res.send("successfully added profile")
+  //     }
+  //   });
+  //   res.send("adding profile");
+  // });
+
+  // //currently not working
+  // app.get('/profilepage', (req, res) => {
+  //   connection.query("SELECT * FROM passport_demo.profileinfos", (err, results) => {
+  //     if(err) {
+  //       return res.send(err)
+  //     } else {
+  //       return res.json({
+  //         data: results
+  //       })
+  //     }
+  //   })
+  // }); 
+
+  //------------------------------
+
+  //posting user profile info to db
+  // app.post("/api/profileinfo", function(req, res) {
+  //   console.log(req.body);
+  //   db.ProfileInfo.create({
+  //     name: req.body.name,
+  //     cuisine: req.body.cuisine,
+  //     description: req.body.description,
+  //     address: req.body.address,
+  //     phoneNumber: req.body.phoneNumber,
+  //     email: req.body.email,
+  //   }).then(function() {
+  //     res.redirect(307, "/api/profile");
+  //   }).catch(function(err) {
+  //     console.log(err);
+  //     res.json(err);
+  //     // res.status(422).json(err.errors[0].message);
+  //   });
+  // });
+
+  // var con= mysql.createConnection({
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "Reinhole87!",
+  //   database: "passport_demo"
+  // });
 
   // app.post("/submit", function(req, res) {
   //   var name= req.body.name;
@@ -119,7 +181,7 @@ app.get("/api/allfarms/:id", function(req, res){
   
   app.post("/submit", function(req, res) {
     console.log(req.body);
-    db.ProfileInfos.create({
+    db.ProfileInfo.create({
       name: req.body.name,
       cuisine: req.body.cuisine,
       description: req.body.description,

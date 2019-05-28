@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt-nodejs");
 const User = require("./user");
 
 module.exports = (sequelize, DataTypes) => {
-    var ProfileInfos = sequelize.define("ProfileInfos", {
+    var ProfileInfo = sequelize.define("ProfileInfo", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -47,11 +47,12 @@ module.exports = (sequelize, DataTypes) => {
         }    
     });
     
-    ProfileInfos.associate = models => {
-        ProfileInfos.belongsTo(models.Users) 
-            // foreignKey: 'ownerUuid'
-        // { foreignKey: 'id'})
-    };
-    
-    return ProfileInfos;
+    ProfileInfo.associate = models => {
+        ProfileInfo.belongsTo(models.Users, 
+            // {foreignKey: 'ownerUuid'});
+        )}
+    return ProfileInfo;
 };
+
+  // User.hasOne(ProfileInfo, {foreignKey: 'profileId', as: 'profile'});
+//   User.hasOne(ProfileInfo);
