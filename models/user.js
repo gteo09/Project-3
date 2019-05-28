@@ -1,5 +1,6 @@
 // Requiring bcrypt for password hashing. Using the bcrypt-nodejs version as 
 //the regular bcrypt module sometimes causes errors on Windows machines
+var uuidv1 = require("uuid/v1");
 const bcrypt = require("bcrypt-nodejs");
 const Profile = require("./profile");
 
@@ -8,6 +9,11 @@ const Profile = require("./profile");
 //Set it as export because we will need it required on the server
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
+    uuid: {
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV1
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -34,7 +40,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Users.associate = models => {
-    Users.hasOne(models.ProfileInfo, {foreignKey: 'id'});
+    Users.hasOne(models.ProfileInfo, 
+      {foreignKey: 'ownerUuid'});
   }
   // User.findAll({
   //   include: [{model: model.profile, as: 'profile'}]

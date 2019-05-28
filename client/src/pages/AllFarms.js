@@ -55,8 +55,8 @@ class AllFarms extends Component {
 render(){       
     return(
         <div>
-            <Navbar />
-            <div className="container-fluid">
+        {/* <Navbar /> */}
+        <h1>Local producers</h1>
             <div className = "row">
                 <div className="col-3">    
                 {/* map will display farm locations and have clickable markers with infowindows */}
@@ -81,8 +81,7 @@ render(){
                     )}
                 </div>               
             </div>
-            </div>
-        </div>
+        </div>       
         )
     }
 }

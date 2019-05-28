@@ -71,7 +71,7 @@ getCoords(address){
 render(){       
     return(
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
                 <div className = "container-fluid" id="contact">
                     <div className ="row" >
                         <div className="col-sm">

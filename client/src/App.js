@@ -7,12 +7,14 @@ import Home from "./pages/Home";
 import FarmProfile from "./pages/FarmerProfile";
 import MyProfile from "./pages/MyProfile";
 import AllFarms from "./pages/AllFarms";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import CreateProfile from "./pages/CreateProfile";
 import Example from "./pages/Example";
 import AboutUsPage from "./pages/AboutUsPage"; 
 import Animals from "../src/images/animals.jpg";
 import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 // function App() {
 
@@ -90,9 +92,11 @@ function App() {
   }
 
   return (
+  <React.Fragment>
     <Router>
-        <div style={sectionStyle} className="backgroundimage">
+      <Navbar/>
         <Switch>
+        <div style={sectionStyle} className="backgroundimage">
           {/* intro to website, link to login form */}
             <Route exact path="/" component={LoginUser} />
           {/* view all producer profiles */}
@@ -113,9 +117,11 @@ function App() {
           {/*Example to mess with*/}
           <Route exact path="/aboutus" component={AboutUsPage}/>      
           {/* <Route component={NotFound} /> */}
+          </div>
         </Switch>
-      </div>
+        <Footer/>
     </Router>
+  </React.Fragment>
   );
 }
 
