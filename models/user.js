@@ -9,11 +9,11 @@ const Profile = require("./profile");
 //Set it as export because we will need it required on the server
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
-    uuid: {
-      primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1
-    },
+    // uuid: {
+    //   primaryKey: true,
+    //   type: DataTypes.UUID,
+    //   defaultValue: DataTypes.UUIDV1
+    // },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
