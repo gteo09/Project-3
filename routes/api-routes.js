@@ -1,49 +1,81 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 //var passport = require("../config/passport");
-var passport = require("passport")
+//var passport = require("passport");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("../config/keys");
+const passport = require("passport");
 var mysql = require("mysql");
-var cors = require('cors');
+// var cors = require('cors');
+const validateRegisterInput =  require("../validation/register")
+const validateLoginInput = require("../validation/login")
+const Users = require("../models/user")
+const express = require("express");
+const router = express.Router();
 //
-module.exports = function(app) {
+// module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
-    // So we're sending the user back the route to the members page because the redirect will happen on the front end
-    // They won't get this or even be able to access this page if they aren't authed
-    res.json("/members");
-  });
+  // app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  //   // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+  //   // So we're sending the user back the route to the members page because the redirect will happen on the front end
+  //   // They won't get this or even be able to access this page if they aren't authed
+  //   res.json("/members");
+  // });
 //
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/register", function(req, res) {
+ router.post("/api/register", (req, res)=> {
     console.log(req.body);
-    db.Users.create({
+
+    const { errors, isValid } = validateRegisterInput(req.body);
+    // Check validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    const newUsers = new db.Users({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password
-    }).then(function() {
-      res.redirect(307, "/api/login");
-    }).catch(function(err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
+      password: req.body.password,
+    })
+
+    // Hash password before saving in database
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUsers.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUsers.password = hash;
+        newUsers 
+          .save()
+          .then(newUsers => res.json(newUsers))
+          .catch(err => console.log(err));
+      });
     });
+    // db.Users.create({
+    //   username: req.body.username,
+    //   email: req.body.email,
+    //   password: req.body.password
+    // }).then(function() {
+    //   res.redirect(307, "/api/login");
+    // }).catch(function(err) {
+    //   console.log(err);
+    //   res.json(err);
+    //   // res.status(422).json(err.errors[0].message);
+    // });
   });
 
 //
 
   // Route for logging user out
-  app.get("/logout", function(req, res) {
+  router.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
   });
 //
   // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
+  router.get("/api/user_data", function(req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -58,16 +90,70 @@ module.exports = function(app) {
     }
   });
 
+router.post("/login",(req,res)=>{
+  const { errors, isValid } = validateLoginInput(req.body);
 
+  // Check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  const email = req.body.email;
+  const password = req.body.password;
+
+  db.Users.findOne({email}).then(user =>{
+    if (!user) {
+      return res.status(404).json({ emailnotfound: "Email not found" });
+    }
+    // Check password
+    bcrypt.compare(password, user.password).then(isMatch => {
+      console.log(password, user.password);
+      if (isMatch) {
+        console.log('Its a match')
+        res.json({msg:'hello'});
+        // User matched
+        //Create JWT Payload
+        const payload = {
+          id: user.id,
+         username: user.username
+        };
+
+        // Sign token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          {
+            expiresIn: 31556926 // 1 year in seconds
+          },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token
+            });
+          }
+        );
+      } 
+      
+      else {
+        return res
+          .status(400)
+          .json({ passwordincorrect: "Password incorrect" });
+      }
+    }
+    );
+  })
+})
+
+  
 //route for getting all info from farms out of database
-app.get("/api/allfarms", function(req, res){
+router.get("/api/allfarms", function(req, res){
   db.Farms.findAll().then(function(dbfarms){
     res.json(dbfarms)
   })
 });
 
 //route for getting info for farm with specific id
-app.get("/api/allfarms/:id", function(req, res){
+router.get("/api/allfarms/:id", function(req, res){
   db.Farms.findAll(
     {where:{
     id:req.params.id
@@ -77,7 +163,7 @@ app.get("/api/allfarms/:id", function(req, res){
 });
 
 //post route for updating your personal profile
-app.post("/api/update/:id", function(req, res){
+router.post("/api/update/:id", function(req, res){
   db.ProfileInfo.findOneAndUpdate({id:req.parmams.id}, req.body)
   .then(dbInfo =>res.json(dbInfo))
   .catch(err=>(console.log(err)))
@@ -87,7 +173,7 @@ app.post("/api/update/:id", function(req, res){
 
 
 
-  app.get('/user', (req, res) => {
+  router.get('/user', (req, res) => {
     db.Users.findAll({
       include: [
         {
@@ -190,7 +276,7 @@ app.post("/api/update/:id", function(req, res){
   //   var phoneNumber = req.body.phoneNumber;
   //   var email = req.body.email;
   
-  app.post("/submit", function(req, res) {
+  router.post("/submit", function(req, res) {
     console.log(req.body);
     db.ProfileInfo.create({
       name: req.body.name,
@@ -207,4 +293,5 @@ app.post("/api/update/:id", function(req, res){
       res.json(err);
     });
   });
-};
+// };
+module.exports = router;
