@@ -34,6 +34,8 @@ class AllFarms extends Component {
 
         this.getInfo();
 
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+
     }
 
     getInfo = () =>{
@@ -54,7 +56,7 @@ class AllFarms extends Component {
 
 render(){       
     return(
-        <div>
+        <div className="listborder">
         {/* <Navbar /> */}
         <h1>Local producers</h1>
             <div className = "row">
@@ -64,7 +66,7 @@ render(){
                 </div>
                 <div className="col-2">
                 </div>
-                <div className="col-6">
+                <div className="col-6 allfarmsprops">
                 <h1>Farms in our Database</h1>
                     {this.state.farms.length ? (
                         <List>

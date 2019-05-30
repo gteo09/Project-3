@@ -46,8 +46,8 @@ render(){
     return(
         <div className="main">
             <section className="signup">
-                <div className="container">
-                    <div className="signup-content">
+                <div className="container containerregprops">
+                    <div className="signup-content regprops">
                         <div className="signup-form">
                             <h2 className="form-title">Sign up</h2>
                             <form method="POST" className="register-form" id="register-form" action="/register">

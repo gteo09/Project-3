@@ -39,11 +39,10 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-
-  // Users.associate = models => {
-  //   Users.hasOne(models.ProfileInfo, 
-  //     {foreignKey: 'ownerUuid'});
-  // }
+  Users.associate = models => {
+    Users.hasOne(models.ProfileInfo, 
+      // {foreignKey: 'ownerUuid'});
+    )}
   // User.findAll({
   //   include: [{model: model.profile, as: 'profile'}]
   // }).then(function(result) {
@@ -54,19 +53,19 @@ module.exports = function(sequelize, DataTypes) {
   //This will check if an unhashed password entered by the 
   //user can be compared to the hashed password stored in our database
     
-    // Users.prototype.validPassword = function(password) {
-    //     return bcrypt.compareSync(password, this.password);
-    // };
+    Users.prototype.validPassword = function(password) {
+        return bcrypt.compareSync(password, this.password);
+    };
 
   // Hooks are automatic methods that run during various phases of the 2 Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
-    // Users.beforeCreate(user => {
-    //     user.password = bcrypt.hashSync(
-    //         user.password, 
-    //         bcrypt.genSaltSync(10), 
-    //         null
-    //     );
-    //     return user;
-    // });
+    Users.beforeCreate(user => {
+        user.password = bcrypt.hashSync(
+            user.password, 
+            bcrypt.genSaltSync(10), 
+            null
+        );
+        return user;
+    });
     return Users;
 }

@@ -4,14 +4,14 @@ import Gabe from "../../images/gabe.jpg";
 import Justin from "../../images/justin.jpg";
 
 const AboutUs = () => (
-    <div className="main">
+    <div className="main aboutusmain">
         <section className="signup">
             <div className="container">
-            <div class="row">
+            <div class="row boxprops">
                 <div class="col-sm-12 col-md-12 col-lg-12"><h1>About Us</h1></div>
                 <div class="w-100"></div>
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <img src={Justin} alt="" className="rounded"/>
+                    <img src={Justin} alt="" className="rounded profilepics"/>
                     <div>Justin Graffeo, MA in C-Kwull *</div>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6">

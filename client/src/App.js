@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import ReactDOM from 'react-dom';
 import "./App.css";
 import RegisterUser from "./pages/RegisterUser";
 import LoginUser from "./pages/LoginUser";
@@ -90,6 +91,5 @@ class App extends React.Component {
       );
   } 
 }
-
 
 export default App;

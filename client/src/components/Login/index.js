@@ -6,8 +6,8 @@ import TempImage from "../../images/farmwithwhite.jpg";
 const Login = () => (
     <div className="main">
       <section className="sign-in">
-            <div className="container">
-                <div className="signin-content">
+            <div className="container containerlogprops">
+                <div className="signin-content logprops">
                     <div className="signin-image">
                         <figure><img src={TempImage} alt="sign up"/></figure>
                         Don't have an account?
