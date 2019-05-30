@@ -12,38 +12,44 @@ module.exports = function(app, passport) {
     res.render(""); //what are we rendering
   });
 
-  app.get("/login", function (req,res){
-    res.render("", {message:req.flash("loginMessage")}); //where?
-  });
+  // app.get("/login", function (req,res){
+  //   res.render("", {message:req.flash("loginMessage")}); //where?
+  // });
 
-  app.post("/login", passport.authenticate("local-login", {
-    successRedirect: "/home",
-    failureRedirect: "/", 
-    failureFlash: true
-  }),
-    function(req, res) {
-      if(req.body.remember) {
-        req.session.cookie.maxAge = 1000 * 60 * 3;
-      } else {
-        req.session.cookie.expires = false;
-      }
-      res.redirect("/");
-    });
+  // app.post('/login', 
+  // passport.authenticate('local', { failureRedirect: '/' }),
+  // function(req, res) {
+  //   res.redirect('/farmprofiles');
+  // });
+
+  // app.post("/login", passport.authenticate("local-login", {
+  //   successRedirect: "/home",
+  //   failureRedirect: "/", 
+  //   failureFlash: true
+  // }),
+  //   function(req, res) {
+  //     if(req.body.remember) {
+  //       req.session.cookie.maxAge = 1000 * 60 * 3;
+  //     } else {
+  //       req.session.cookie.expires = false;
+  //     }
+  //     res.redirect("/");
+  //   });
 
     app.get("/register", function(req, res) {
       res.render("", {message: req.flash("signupMessage")}); //where?
     });
 
-    app.post("/register", passport.authenticate("local-signup", {
-      successRedirect: "/createprofile", // create profile page
-      failureRedirect: "/register",
-      failureFlash: true
-    }));
+    // app.post("/register", passport.authenticate("local-signup", {
+    //   successRedirect: "/createprofile", // create profile page
+    //   failureRedirect: "/register",
+    //   failureFlash: true
+    // }));
 
-    app.get("/profile", isLoggedIn, function(req, res) {
-      res.render("", { // where?
-        user:req.user});
-      });
+    // app.get("/profile", isLoggedIn, function(req, res) {
+    //   res.render("", { // where?
+    //     user:req.user});
+    //   });
 
       app.get("/logout", function(req, res) {
         req.logout();

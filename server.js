@@ -3,9 +3,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const userRouter = require('./routes/api-routes');
+const cors = require("cors");
 // Requiring passport as we've configured it
-// var passport = require("passport");
-var passport = require("./config/passport");
+var passport = require("passport");
 
 const flash = require("connect-flash");
 // Requiring mysql
@@ -31,13 +32,20 @@ app.use(session({
   saveUninitialized: true 
 }));
 
+app.use(cors());
+app.options("*", cors());
+
+app.use(userRouter)
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 //
 // Requiring our routes
-require("./routes/html-routes.js")(app, passport);
-require("./routes/api-routes.js")(app, passport);
+require("./routes/html-routes.js")(app);
+require("./config/passport")(passport);
+// require("./routes/api-routes.js")(app);
+
+
 
 
 var syncOptions = { force: false };
