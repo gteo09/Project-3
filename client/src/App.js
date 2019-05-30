@@ -16,84 +16,80 @@ import Animals from "../src/images/animals.jpg";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
-import {TweenLite, Power2} from "gsap/TweenMax";
+import setAuthToken from "../src/utils/setAuthToken";
+import jwt_decode from "jwt-decode";
+import loginUser from "../src/utils/API";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+import { Provider } from "react-redux";
+import store from "./store";
+import PrivateRoute from "../src/components/privateRoute/PrivateRoute";
 
-// const HeroBanner = ({ image, min, max, children }) => (
-//   <div className="hero-container">
-//       <Parallax offsetYMin={min} offsetYMax={max} slowerScrollRate>
-//           <div
-//               className="hero-image"
-//               style={{ backgroundImage: `url(${Animals})` }}
-//           />
-//       </Parallax>
-//       <div className="hero-children">{children}</div>
-//   </div>
-// );
 
-function App() {
-
-  var sectionStyle = {
-    backgroundImage: `url(${Animals})`
-  }
-
-  return (
-  <React.Fragment>
-    <Router>
-      <Navbar/>
-        <Switch>
-        <div style={sectionStyle} className="backgroundimage">
-          {/* intro to website, link to login form */}
-            <Route exact path="/" component={LoginUser} />
-          {/* view all producer profiles */}
-            <Route exact path="/createprofile" component= {CreateProfile}/>
-          {/*registering new user*/}
-          <Route exact path="/register" component={RegisterUser} />
-          {/*registering new user*/}
-          <Route exact path="/home" component={Home} />
-          {/* login page */}
-          {/* view all producer profiles */}
-          <Route exact path="/farmprofiles" component={AllFarms} />
-          {/* view specific producer profiles */}
-          <Route exact path="/farmprofiles/:id" component= {FarmProfile}/>
-          {/* view specific user profile */}
-          <Route exact path="/profiles/:id" component={MyProfile} />
-          {/*Example to mess with*/}
-          <Route exact path="/example" component={Example}/> 
-          {/*Example to mess with*/}
-          <Route exact path="/aboutus" component={AboutUsPage}/>      
-          {/* <Route component={NotFound} /> */}
-          </div>
-        </Switch>
-        <Footer/>
-    </Router>
-  </React.Fragment>
-  );
+if (localStorage.jwtToken) {
+    // Set auth token header auth
+    const token = localStorage.jwtToken;
+    setAuthToken(token);
+    // Decode token and get user info and exp
+    const decoded = jwt_decode(token);
+    // Set user and isAuthenticated
+    store.dispatch(setCurrentUser(decoded));
+    // Check for expired token
+    const currentTime = Date.now() / 1000; // to get in milliseconds
+    if (decoded.exp < currentTime) {
+      // Logout user
+      store.dispatch(logoutUser());
+  
+      // Redirect to login
+      window.location.href = "/";
+    }
 }
 
-// const run = () => {
-//   const root = document.createElement('div');
-//   document.body.appendChild(root);
+class App extends React.Component {
 
-//   const scrollAnimation = { scrollTop: window.innerHeight };
-//   const scrollTop = 0;
+  sectionStyle = {
+    backgroundImage: `url(${Animals})`
+  };
 
-//   const tween = TweenLite.to(scrollAnimation, 2, {
-//       scrollTop: scrollTop,
-//       ease: Power2.easeInOut,
-//       onUpdate: () => {
-//           window.scrollTo(0, scrollAnimation.scrollTop);
-//       }
-//   });
 
-//   window.addEventListener('mousewheel', function mouseHandler() {
-//       tween.kill();
-//       window.removeEventListener('mousewheel', mouseHandler, false);
-//   }, false);
-
-//   ReactDOM.render(<App />, root);
-// };
-
-// run();
+  render(){
+    return (
+    <Provider store={store}>
+      <React.Fragment>
+        <Router>
+          <Navbar/>
+            <Switch>
+            <div style={this.sectionStyle} className="backgroundimage">
+              {/* intro to website, link to login form */}
+              <Route exact path="/" component={LoginUser} />
+              {/* view all producer profiles */}
+                <Route exact path="/createprofile" component= {CreateProfile}/>
+              {/*registering new user*/}
+              <Route exact path="/register" component={RegisterUser} />
+              {/*registering new user*/}
+              <Route exact path="/home" component={Home} />
+              {/* login page */}
+              {/* view all producer profiles */}
+              <Route exact path="/farmprofiles" component={AllFarms} />
+              {/* view specific producer profiles */}
+              <Route exact path="/farmprofiles/:id" component= {FarmProfile}/>
+              {/* {landing page when logged authenticated} */}
+              {/* <Route exact path="/myprofile" component={MyProfile} /> */}
+              {/* view specific user profile */}
+              {/* <Route exact path="/profiles/:id" component={MyProfile} /> */}
+              {/*Example to mess with*/}
+              <Route exact path="/example" component={Example}/> 
+              {/*Example to mess with*/}
+              <Route exact path="/aboutus" component={AboutUsPage}/>      
+              {/* <Route component={NotFound} /> */}
+              <PrivateRoute exact path ="/privateprofile" component={MyProfile}></PrivateRoute>
+              </div>
+            </Switch>
+            <Footer/>
+        </Router>
+      </React.Fragment>
+    </Provider>
+      );
+  } 
+}
 
 export default App;

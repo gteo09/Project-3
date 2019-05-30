@@ -1,106 +1,117 @@
-var User = require("../models/user");
+// var LocalStrategy = require("passport-local").Strategy;
+//passwort-jwt
+const JwtStrategy = require("passport-jwt").Strategy;
+const ExtractJwt = require("passport-jwt").ExtractJwt;
+var User = require('../models/user');
+var keys = require("../config/keys")
+// var db = require("../models");
 
-//we import passport packages required for authentication
-var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
-//
-const bcrypt = require("bcrypt-nodejs");
-// const dbconfig = require("./database");
-// const connection = mysql.createConnection(dbconfig.connection);
-const connection = require("./database");
-const db = require("../models");
-//
-// module.exports = function(passport) {
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
+const opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = keys.secretOrKey;
 
-  passport.deserializeUser(function(id, done) {
-    connection.query("SELECT * FROM users WHERE id = ? ", [id],
-    function(err, rows) {
-      done(err, rows[0]);
-    });
-  });
-
+module.exports = passport =>{
   passport.use(
-    "local-signup",
-    new LocalStrategy({
-      usernameField : "username",
-      passwordField : "password",  
-      passReqToCallback : true
-    },
-    function(req, username, password, done) {
-      console.log(req.body);
-      connection.query("SELECT * FROM Users WHERE username = ? ",
-      [username], function(err, rows) {
-        if(err)
-        return done(err);
-        if(rows.length) {
-          return done(null, false, req.flash("signupMessage", "That is already taken"));
-        } else {
-          var newUserMysql = {
-            username: req.body.username,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, null, null)
-          };
-
-          db.Users.create(newUserMysql).then((user) => {
-            console.log(user);
-            return done(null, user);
-          })
-          // var insertQuery = "INSERT INTO new (username, email, password) values (?, ?, ?)";
-
-          // connection.query(insertQuery, [newUserMysql.username, newUserMysql.email, newUserMysql.password],
-          //   function(err, rows) {
-          //     console.log(err,rows);
-          //     newUserMysql.id = rows.insertId;
-
-          //     return done(null, newUserMysql);
-          //   });
-          // }
+    new JwtStrategy(opts, (jwt_payload, done)=>{
+      User.findOne(jwt_payload.id).then(user =>{
+        if(user){
+          return done(null, user)
         }
-        });
-      })
-    )
+        return done(null, false)
+      }).catch(err=>console.log(err))
+    })
+  )
+}
 
-    passport.use(
-      "local-login",
-      new LocalStrategy({
-        usernameField : "username",
-        passwordField : "password",
-        passReqToCallback : true
-      },
-      function(req, username, password, done) {
-        console.log(username);
-        connection.query("SELECT * FROM users WHERE username = ? ", [username],
-        function(err, rows) {
-          console.log(rows[0]);
-          if(err) {
-          return done(err);
-          }
-          if(!rows.length){
-            return done(null, false, req.flash("loginMessage", "No User Found"));
-          }
-          console.log(!bcrypt.compareSync(password, rows[0].password));
-          if (!bcrypt.compareSync(password, rows[0].password)) {
-            console.log(password);
-            return done(null, false, req.flash("loginMessage", "Wrong Password"));
-          }
-      
-          return done(null, rows[0]);
-        });
-      })
-    );
-    
-    // passport.use(new LocalStrategy(
-    //   function(username, password, done) {
-    //     User.findOne({ username: username }, function (err, user) {
-    //       if (err) { return done(err); }
-    //       if (!user) { return done(null, false); }
-    //       if (!user.verifyPassword(password)) { return done(null, false); }
-    //       return done(null, user);
-    //     });
-    //   }
-    // ));
-  
-  module.exports = passport;
+// module.exports = function(passport) {
+//   // passport.serializeUser(function(user, done) {
+//   //   done(null, user.uuid);
+//   // });
+
+//   // passport.deserializeUser(function(uuid, done) {
+//   //   db.User.findById(uuid).then(function(user) {
+//   //     if (user) {
+//   //       done(null, user.get());
+//   //     } else {
+//   //       done(user.errors, null);
+//   //     }
+//   //   });
+//   // });
+
+//   //Register for an user
+//   passport.use(
+//     "local-signup",
+//     new LocalStrategy(
+//       {
+//         usernameField: "email",
+//         passwordField: "password",
+//         passReqToCallback: true
+//       },
+//       function(req, email, password, done) {
+//         process.nextTick(function() {
+//           db.User.findOne({ 
+//             where: {
+//               email: email
+//             }
+//           }).then(function(user, err) {
+//             if (err) {
+//               console.log("err", err);
+//               return done(err);
+//             }
+//             if (user) {
+//               console.log("email " + email + " is already taken.");
+//               return done(null, false, {
+//                 message: "Sorry, that email is taken."
+//               });
+//             } else {
+//               db.User.create({
+//                 username: req.body.username,
+//                 email: req.body.email,
+//                 password: db.User.generateHash(password)
+//               })
+//                 .then(function(dbUser) {
+//                   return done(null, dbUser);
+//                 })
+//                 .catch(function(err) {
+//                   console.log(err);
+//                   return done(err);
+//                 });
+//             }
+//           });
+//         });
+//       }
+//     )
+//   );
+
+//   //log in to your account
+//   passport.use(
+//     "local-login",
+//     new LocalStrategy(
+//       {
+//         usernameField: "email",
+//         passwordField: "password",
+//         passReqToCallback: true
+//       },
+//       function(req, email, password, done) {
+//         db.User.findOne({
+//           where: {
+//             email: email
+//           }
+//         })
+//           .then(function(user) {
+//             if (!user) {
+//               return done(null, false, {
+//                 message: "It looks like that email doesn't exist!"
+//               });
+//             } else if (!user.validPassword(password)) {
+//               return done(null, false, { message: "Oops! Wrong password." });
+//             }
+//             return done(null, user);
+//           })
+//           .catch(function(err) {
+//             return done(err);
+//           });
+//       }
+//     )
+//   );
+// };

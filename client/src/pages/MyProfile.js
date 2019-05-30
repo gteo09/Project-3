@@ -2,50 +2,31 @@ import React, {Component} from "react";
 import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
 import "../pages/pageStyles/myprofile.css";
+import { connect } from "react-redux";
+import API from "../utils/API";
+ 
+
+
 
 class UserProfile extends Component {
 
-    state = {
-        //empty object to be filled by api call to database
-        profile: {
-            description:"",
-            image:"",
-            location:{lat:"",lng:""},
-            //test products, this array should be populated from database
-            products:[ 
-                {id: 35, name: 'jumper', color: 'red', price: 20},
-                {id: 42, name: 'shirt', color: 'blue', price: 15},
-                {id: 56, name: 'pants', color: 'green', price: 25},
-                {id: 71, name: 'socks', color: 'black', price: 5},
-                {id: 72, name: 'socks', color: 'white', price: 5}
-            ]
-        }
-    }
-
-    /*this function will grab data from api call and assign to this component's state
-    to be accessed to populate the fields below */
-
-// componentDidMount(){
-//     API.getProfile(this.props.match.params.id)
-//     .then(res=>this.setState({profile: res.data}))
-//     .catch(err=>console.log(err))
-// }
 
 componentDidMount() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
-
-render(){       
+     
+render(){  
+    console.log(this.props.auth.user.username)     
     return(
         <div className="profileborder">
             {/* <Navbar /> */}
-            <h1>Specific user profile</h1>
+            <h1>{this.props.auth.user.username}</h1>
             <div className = "container-fluid profilecontainer">
-                <div className ="row profileprops ">
+                <div className ="row profileprops">
                     <div className="col-sm">
-                    <h1>this.state.profile.name</h1>
-                    <h1>this.state.profile.image</h1>
-                    <p>this.state.profile.contact</p>
+                    {/* <h1>{this.state.name}</h1> */}
+                    {/* <h1>this.state.profile.image</h1>
+                    <p>this.state.profile.contact</p> */}
                     </div>
                     
                 </div>
@@ -65,12 +46,15 @@ render(){
                             </ListItem>
                         ))}    
                     </List>
-                </div>
+                </div> */}
                 
             </div>
         </div>
         )
     }
 }
-
-export default UserProfile;
+const mapStateToProps = state => ({
+    auth: state.auth
+  });
+  
+  export default connect(mapStateToProps)(UserProfile);
