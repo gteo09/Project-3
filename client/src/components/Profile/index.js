@@ -7,10 +7,10 @@ const Profile = () => (
 
 <div className="main">
       <section className="sign-in">
-            <div className="container">
-                <div className="signin-content">
+            <div className="container containerprops">
+                <div className="signin-content createprops">
                     <div className="signin-image">
-                        <figure><img src={Table} alt="sign up"/></figure>
+                        <figure><img src={Table} className="table" alt="sign up"/></figure>
                     </div>
 
                     <div className="signin-form">

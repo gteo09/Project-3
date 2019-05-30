@@ -186,9 +186,22 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-family: Poppins;
     font-size: 36px; }
   
-  .main {
+  .aboutusmain {
     /* background-image: #f8f8f8; */
-    padding: 150px 0; }
+    padding: 100px 0; 
+  }
+
+  .boxprops {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
+    -moz-box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
+    -webkit-box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
+    -o-box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
+    border-radius: 15px;
+    border: solid 1px rgba(0,0,0,0.6);
+    padding: 20px 10px 20px 10px;
+  }
+
   
   .clear {
     clear: both; }

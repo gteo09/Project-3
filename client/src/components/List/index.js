@@ -1,11 +1,12 @@
 import React from "react";
+import "./List.css";
 
 //List and list items component for list of available products and for displaying all farms
 
 export function List({ children }) {
   return (
-    <div className="list-overflow-container">
-      <ul className="list-group">{children}</ul>
+    <div className="list-overflow-container listcontainer">
+      <ul className="list-group listprops">{children}</ul>
     </div>
   );
 }

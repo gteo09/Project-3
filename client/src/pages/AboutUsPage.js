@@ -17,6 +17,10 @@ class AboutUsPage extends Component {
 //     .catch(err=>console.log(err))
 // }
 
+componentDidMount() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 render(){       
     return(
         <div>

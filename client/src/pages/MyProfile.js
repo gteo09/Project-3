@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
+import "../pages/pageStyles/myprofile.css";
 
 class UserProfile extends Component {
 
@@ -31,13 +31,17 @@ class UserProfile extends Component {
 //     .catch(err=>console.log(err))
 // }
 
+componentDidMount() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 render(){       
     return(
-        <div>
+        <div className="profileborder">
             {/* <Navbar /> */}
             <h1>Specific user profile</h1>
-            <div className = "container-fluid">
-                <div className ="row">
+            <div className = "container-fluid profilecontainer">
+                <div className ="row profileprops ">
                     <div className="col-sm">
                     <h1>this.state.profile.name</h1>
                     <h1>this.state.profile.image</h1>
@@ -48,11 +52,10 @@ render(){
             </div>
             <div className = "row">
                 <div className="col-3">
-                    <Map  />
                 </div>
                 <div className="col-2">
                 </div>
-                <div className="col-6">
+                <div className="col-6 profileprops">
                 <h1>Our Values</h1>
                     <p>this.state.profile.description</p>
                     Products Currently Available

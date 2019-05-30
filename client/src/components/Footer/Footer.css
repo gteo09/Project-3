@@ -2,11 +2,30 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #f8f9fac5;
+    background-color: white;
     color: black;
     text-align: center;
 }
 
 #footercopywright {
     background-color: rgb(255, 227, 227);
+}
+
+.image {
+    max-width: 200px;
+    }
+
+.footprops {
+    background-color: white;
+    box-shadow: 0px -2px rgba(71, 71, 71, 0.6);
+    -moz-box-shadow: 0px -2px rgba(71, 71, 71, 0.6);
+    -webkit-box-shadow: 0px -2px rgba(71, 71, 71, 0.6);
+    -o-box-shadow: 0px -2px rgba(71, 71, 71, 0.6); 
+    border-radius: 0px;
+    font-family: 'Vollkorn', serif;
+
+}
+
+.linkprops {
+    scroll-behavior: smooth;
 }

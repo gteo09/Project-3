@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import ReactDOM from 'react-dom';
 import "./App.css";
 import RegisterUser from "./pages/RegisterUser";
 import LoginUser from "./pages/LoginUser";
@@ -15,6 +16,20 @@ import Animals from "../src/images/animals.jpg";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+import {TweenLite, Power2} from "gsap/TweenMax";
+
+// const HeroBanner = ({ image, min, max, children }) => (
+//   <div className="hero-container">
+//       <Parallax offsetYMin={min} offsetYMax={max} slowerScrollRate>
+//           <div
+//               className="hero-image"
+//               style={{ backgroundImage: `url(${Animals})` }}
+//           />
+//       </Parallax>
+//       <div className="hero-children">{children}</div>
+//   </div>
+// );
 
 function App() {
 
@@ -23,7 +38,7 @@ function App() {
   }
 
   return (
-    <h>
+  <React.Fragment>
     <Router>
       <Navbar/>
         <Switch>
@@ -52,9 +67,33 @@ function App() {
         </Switch>
         <Footer/>
     </Router>
-    </h>
+  </React.Fragment>
   );
 }
 
+// const run = () => {
+//   const root = document.createElement('div');
+//   document.body.appendChild(root);
+
+//   const scrollAnimation = { scrollTop: window.innerHeight };
+//   const scrollTop = 0;
+
+//   const tween = TweenLite.to(scrollAnimation, 2, {
+//       scrollTop: scrollTop,
+//       ease: Power2.easeInOut,
+//       onUpdate: () => {
+//           window.scrollTo(0, scrollAnimation.scrollTop);
+//       }
+//   });
+
+//   window.addEventListener('mousewheel', function mouseHandler() {
+//       tween.kill();
+//       window.removeEventListener('mousewheel', mouseHandler, false);
+//   }, false);
+
+//   ReactDOM.render(<App />, root);
+// };
+
+// run();
 
 export default App;

@@ -3,7 +3,8 @@ import Map from "../components/Map";
 import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
 import API from "../utils/API";
-import {BrowserRouter as Router, Link, Route} from "react-router-dom"
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import "./pageStyles/allfarms.css"
 
 class AllFarms extends Component {
 
@@ -33,6 +34,8 @@ class AllFarms extends Component {
 
         this.getInfo();
 
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+
     }
 
     getInfo = () =>{
@@ -53,18 +56,17 @@ class AllFarms extends Component {
 
 render(){       
     return(
-        <div>
-            {/* <Navbar /> */}
-            <h1>Local producers</h1>
+        <div className="listborder">
+        {/* <Navbar /> */}
+        <h1>Local producers</h1>
             <div className = "row">
-                <div className="col-3">
-                    
+                <div className="col-3">    
                 {/* map will display farm locations and have clickable markers with infowindows */}
                     <Map  />
                 </div>
                 <div className="col-2">
                 </div>
-                <div className="col-6">
+                <div className="col-6 allfarmsprops">
                 <h1>Farms in our Database</h1>
                     {this.state.farms.length ? (
                         <List>
@@ -79,10 +81,9 @@ render(){
                     ) : (
                     <h3>no results found</h3>
                     )}
-                </div>
-                
+                </div>               
             </div>
-        </div>
+        </div>       
         )
     }
 }

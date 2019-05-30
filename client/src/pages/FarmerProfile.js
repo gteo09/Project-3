@@ -28,6 +28,8 @@ componentDidMount(){
 
     this.loadData();
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
 };
 
 loadData(){
@@ -77,16 +79,16 @@ render(){
                         <div className="col-sm">
                             <h1>{this.state.name}</h1>
                             <h1>this.state.profile.image</h1>
-                            <p>{this.state.address}</p>
-                            <p>{this.state.phoneNumber}</p>
-                            <p>{this.state.website}</p>
+                            <p>Address: {this.state.address}</p>
+                            <p>Phone: {this.state.phoneNumber}</p>
+                            <p>Website: <a href={this.state.website} target="_blank" rel="noopener noreferrer">{this.state.website}</a></p>
                         </div>   
                     </div>
                 </div>
                 <div className="container-fluid">
                     <div className = "row">
                         <div className="col-3">
-                            <Map lat={this.state.location.lat} lng={this.state.location.lng} />
+                            <Map lat={this.state.location.lat} lng={this.state.location.lng} name={this.state.name} />
                         </div>
                         <div className="col-2">
                         </div>

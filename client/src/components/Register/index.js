@@ -7,10 +7,10 @@ import TempImage from "../../images/farmwithwhite.jpg";
 const Register = () => (
 <div className="main">
     <section className="signup">
-        <div className="container">
-            <div className="signup-content">
+        <div className="container containerregprops">
+            <div className="signup-content regprops">
                 <div className="signup-form">
-                    <h2 className="form-title">Sign up</h2>
+                    <h2 className="form-title">Register</h2>
                     <form method="POST" className="register-form" id="register-form" action="/register">
                         <div className="form-group">
                             <label for="username"><i className="zmdi zmdi-account material-icons-name"></i></label>

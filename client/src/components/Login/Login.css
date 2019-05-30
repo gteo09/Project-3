@@ -187,7 +187,22 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
   .main {
     /* background-image: #f8f8f8; */
-    padding: 100px 0; }
+    padding: 150px 0; }
+
+  .logprops {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
+    -moz-box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
+    -webkit-box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
+    -o-box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
+    border-radius: 15px;
+    border: solid 1px rgba(0,0,0,0.6);
+  }
+
+.containerlogprops {
+    opacity: 10px;
+    background: none !important;
+}
   
   .clear {
     clear: both; }
@@ -263,6 +278,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     margin: 0 55px; }
   
   .form-title {
+    font-family: 'Vollkorn', serif;
     margin-bottom: 33px; }
   
   .signup-image {
@@ -576,6 +592,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       padding: 0 30px; }
   
     .form-title {
+      font-family: 'Vollkorn', serif;
       text-align: center; } }
   @media screen and (max-width: 400px) {
     .social-login {

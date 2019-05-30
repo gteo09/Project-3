@@ -38,20 +38,7 @@ app.use(flash());
 // Requiring our routes
 require("./routes/html-routes.js")(app, passport);
 require("./routes/api-routes.js")(app, passport);
-//
 
-//FIRST VERSION
-// // Connecting to database
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'Reinhole87!',
-//   database: 'passport_demo'
-// });
-
-// // connection.connect(function(err) {
-// //   // (err)? console.log(err): console.log(connection);
-// // });
 
 var syncOptions = { force: false };
 

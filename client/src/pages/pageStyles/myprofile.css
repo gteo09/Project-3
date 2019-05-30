@@ -1,5 +1,4 @@
-
-.farmprops {
+.profileprops {
     background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 5px  rgba(0,0,0,0.6);
     -moz-box-shadow: 5px 5px 5px  rgba(0,0,0,0.6);
@@ -7,10 +6,16 @@
     -o-box-shadow: 5px 5px 5px  rgba(0,0,0,0.6);
     border-radius: 15px;
     border: solid 1px rgba(0,0,0,0.6);
-    padding: 20px 10px 20px 10px;
+    padding: 15px 20px 15px 20px;
 }
 
-.farmcontainer {
+.profilecontainer {
     opacity: 10px;
     background: none !important;
+}
+
+.profileborder {
+    /* margin-top: 50px; */
+    margin-bottom: 100px;
+    font-family: 'Vollkorn', serif;
 }
