@@ -8,7 +8,7 @@ const Profile = require("./profile");
 // Creating our User model
 //Set it as export because we will need it required on the server
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
+  var Users = sequelize.define("UsersOld", {
     // uuid: {
     //   primaryKey: true,
     //   type: DataTypes.UUID,

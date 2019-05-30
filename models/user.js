@@ -31,12 +31,24 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     password: {
+      type: DataTypes.STRING(255),
+      required: true,
+      // validate: {
+      //   len: [8]
+      // }
+    },
+    description:{
       type: DataTypes.STRING,
       required: true,
-      validate: {
-        len: [8]
-      }
     },
+    phoneNumber:{
+      type: DataTypes.STRING,
+      required: true
+    },
+    address:{
+      type: DataTypes.STRING,
+      required: true
+    }
   });
 
 
