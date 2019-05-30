@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import "./Navbar.css";
 import {BrowserRouter as Router, Route, NavLink, Link, Switch} from "react-router-dom";
+import {logoutUser} from "../../actions/authActions";
+import {connect} from "react-redux";
 
 
 class Navbar extends Component{
@@ -50,7 +52,7 @@ class Navbar extends Component{
                         </Link>    
                     </li>
                     <li className="nav-item" id="navtext">   
-                        <Link to="/logout"> <button className="btn btn-outline-primary">Log Out</button>
+                        <Link onClick={this.props.logoutUser}> <button className="btn btn-outline-primary">Log Out</button>
                         </Link>
                     </li>
                     </ul>
@@ -97,4 +99,4 @@ class Navbar extends Component{
 //     )
 // }
 
-export default Navbar;
+export default connect(null,{logoutUser})(Navbar)
