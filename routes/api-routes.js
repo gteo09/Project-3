@@ -54,7 +54,8 @@ router.post("/api/register", (req, res)=> {
         password: hash,
         description: req.body.description,
         phoneNumber: req.body.phoneNumber,
-        address: req.body.address
+        address: req.body.address,
+        website: req.body.website
       };
 
       console.log(newUser);
@@ -144,7 +145,8 @@ router.post("/login",(req,res)=>{
         description: user.description,
         phoneNumber: user.phoneNumber,
         address: user.address,
-        email: user.email
+        email: user.email,
+        website: user.website
         };
         console.log(payload,"<-------------")
 
