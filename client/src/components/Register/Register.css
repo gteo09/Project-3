@@ -1,5 +1,6 @@
-.main {
+.mainreg {
     font-family: 'Vollkorn', serif;
+    margin-bottom: -100px;
 }
 
 .register {
@@ -63,4 +64,9 @@
 .containerregprops {
     opacity: 10px;
     background: none !important;
+}
+
+.container {
+    padding-top: 100px;
+    padding-bottom: 100px !important;
 }

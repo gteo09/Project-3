@@ -187,8 +187,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-size: 36px; }
   
   .aboutusmain {
-    /* background-image: #f8f8f8; */
-    padding: 100px 0; 
+    padding: 0px; 
   }
 
   .boxprops {
@@ -214,9 +213,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-weight: 400;
     font-family: Poppins; }
   
-  .container {
+  .aboutcontainer {
     width: 900px;
-    background: #fff;
+    background: none;
     margin: 0 auto;
     box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -227,7 +226,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     -o-border-radius: 20px;
-    -ms-border-radius: 20px; }
+    -ms-border-radius: 20px; 
+  }
   
   .display-flex {
     justify-content: space-between;

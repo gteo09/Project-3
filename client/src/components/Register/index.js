@@ -51,7 +51,7 @@ class Register extends React.Component {
 render(){
 
     return(
-        <div className="main">
+        <div className="mainreg">
             <section className="signup">
                 <div className="container containerregprops">
                     <div className="signup-content regprops">
