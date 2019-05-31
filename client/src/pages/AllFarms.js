@@ -56,17 +56,13 @@ class AllFarms extends Component {
 
 render(){       
     return(
-        <div className="listborder">
-        {/* <Navbar /> */}
-        <h1>Local producers</h1>
-            <div className = "row">
-                <div className="col-3">    
+        <div className="allfarmborder container-fluid">
+            <div className ="row allfarmsprops">
+                <div className="col-lg-6 col-12 mapprops">    
                 {/* map will display farm locations and have clickable markers with infowindows */}
                     <Map  />
                 </div>
-                <div className="col-2">
-                </div>
-                <div className="col-6 allfarmsprops">
+                <div className="col-lg-6 col-12">
                 <h1>Farms in our Database</h1>
                     {this.state.farms.length ? (
                         <List>

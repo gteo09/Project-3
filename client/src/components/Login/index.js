@@ -4,7 +4,7 @@ import "./Login.css";
 import TempImage from "../../images/farmwithwhite.jpg";
 
 const Login = () => (
-    <div className="main">
+    <div className="mainlogin">
       <section className="sign-in">
             <div className="container containerlogprops">
                 <div className="signin-content logprops">
@@ -16,21 +16,55 @@ const Login = () => (
 
                     <div className="signin-form">
                         <h2 className="form-title">Sign in</h2>
-                        <form method="POST" className="register-form" id="login-form" action="/login">
-                            <div className="form-group">
-                                <label for="username"><i className="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="username" placeholder="Your Name"/>
+                        <form noValidate onSubmit={this.onSubmit} className="register-form" id="login-form">
+                            <div className="form-group input-field col s12">
+                                <input
+                                    onChange={this.onChange}
+                                    value={this.state.email}
+                                    error={errors.email}
+                                    id="email"
+                                    type="email"
+                                    placeholder="E-mail"
+                                />
+                                <label for="username" htmlFor="email">
+                                    <i className="zmdi zmdi-account material-icons-name"></i>
+                                </label>
+                                <span className="red-text">
+                                    {errors.email}
+                                    {errors.emailnotfound}
+                                </span>
                             </div>
-                            <div className="form-group">
-                                <label for="password"><i className="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="password" id="password" placeholder="Password"/>
+                            <div className="form-group input-field col s12">
+                            <input
+                                onChange={this.onChange}
+                                value={this.state.password}
+                                error={errors.password}
+                                id="password"
+                                type="password"
+                                placeholder="Password"
+                            />
+                            <label for="password" htmlFor="password">
+                                <i className="zmdi zmdi-lock"></i>
+                            </label>
+                            <span className="red-text">
+                                {errors.password}
+                                {errors.passwordincorrect}
+                            </span>
                             </div>
-                            <div className="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" className="agree-term" />
-                                <label for="remember-me" className="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
-                            <div className="form-group form-button">
-                                <input type="submit" name="signin" id="signin" className="form-submit" value="Log in"/>
+                            <div className="form-group form-button col s12" style={{ paddingLeft: "11.250px" }}>
+                                <input
+                                    style={{  
+                                        width: "150px",
+                                        borderRadius: "3px",
+                                        letterSpacing: "1.5px",
+                                        marginTop: "1rem"
+                                    }}
+                                    type="submit"
+                                    name="signin"
+                                    id="signin"
+                                    className="form-submit btn btn-large waves-effect waves-light hoverable blue accent-3"
+                                    value="Log In"
+                                    />
                             </div>
                         </form>
                     </div>

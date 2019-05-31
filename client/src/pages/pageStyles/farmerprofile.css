@@ -1,5 +1,5 @@
-.container-fluid {
-    background: #fff;
+.farminfo, .ourvalues {
+    background: none;
     margin: 0 auto;
     box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -12,10 +12,39 @@
     -webkit-border-radius: 20px;
     -o-border-radius: 20px;
     -ms-border-radius: 20px;
-    padding: 10px 10px 10px 10px;
+}
+
+.farminfo {
+    padding: 50px 10px 10px 10px;
+}
+.ourvalues {
+    padding: 10px 10px 100px 10px;
 }
 
 #contact{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.farmerprops {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 5px  rgba(0,0,0,0.6);
+    -moz-box-shadow: 5px 5px 5px  rgba(0,0,0,0.6);
+    -webkit-box-shadow: 5px 5px 5px  rgba(0,0,0,0.6);
+    -o-box-shadow: 5px 5px 5px  rgba(0,0,0,0.6);
+    border-radius: 15px;
+    border: solid 1px rgba(0,0,0,0.6);
+    padding: 20px 20px 20px 20px;
+    overflow: auto;
+}
+
+.mapprops {
+    height: auto;
+    margin: -20px;
+    padding: 20px 20px 20px 20px;
+    width: 50%;
+    border: 1px black;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
 }

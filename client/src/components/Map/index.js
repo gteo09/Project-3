@@ -140,9 +140,11 @@ initMap = () => {
 
     render (){
     return (
+      <div className="container-fluid">
         <main>
         <div id="map"></div>
-        </main>
+      </main>
+      </div>
     )
   }
 }

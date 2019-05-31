@@ -54,7 +54,8 @@ var syncOptions = { force: false };
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
-}
+}  
+
 
 // Syncing our database and logging a message to the user upon success - Uncomment to see error in terminal
 db.sequelize.sync(syncOptions).then(function() {
