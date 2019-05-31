@@ -11,7 +11,10 @@ class Register extends React.Component {
         username:"",
         email:"",
         password:"",
-        password2:""
+        password2:"",
+        description:"",
+        phoneNumber:"",
+        address:""
     }
 
     handleInputChange = event => {
@@ -30,9 +33,13 @@ class Register extends React.Component {
                 username: this.state.username,
                 password: this.state.password,
                 email: this.state.email,
-                password2: this.state.password2
+                password2: this.state.password2,
+                description: this.state.description,
+                phoneNumber: this.state.phoneNumber,
+                address: this.state.address
             }).then(res=>{
                 console.log(res);
+                
 
             }).catch(err=>{
                 console.log(err);
@@ -66,6 +73,18 @@ render(){
                                 <div className="form-group">
                                     <label for="re-pass"><i className="zmdi zmdi-lock-outline"></i></label>
                                     <input type="password" name="password2" id="re_pass" placeholder="Repeat your password" value={this.state.password2} onChange={this.handleInputChange}/>
+                                </div>
+                                <div className="form-group">
+                                    <label for="address"><i className="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="address" id="re_pass" placeholder="Address" value={this.state.address} onChange={this.handleInputChange}/>
+                                </div>
+                                <div className="form-group">
+                                    <label for="phoneNumber"><i className="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="phoneNumber" id="re_pass" placeholder="Phone Number" value={this.state.phoneNumber} onChange={this.handleInputChange}/>
+                                </div>
+                                <div className="form-group">
+                                    <label for="description"><i className="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="description" id="re_pass" placeholder="Business Description" value={this.state.description} onChange={this.handleInputChange}/>
                                 </div>
                                 <div className="form-group form-button">
                                     <input type="submit" name="register" id="signup" className="form-submit" value="Register" onClick={this.handleFormSubmit}/>
