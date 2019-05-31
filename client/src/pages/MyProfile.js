@@ -23,6 +23,8 @@ render(){
                     <h1>{this.props.auth.user.username}</h1>
                     <p>{this.props.auth.user.address}</p>
                     <p>{this.props.auth.user.phoneNumber}</p>
+                    <p>{this.props.auth.user.email}</p>
+                    <a href={this.props.auth.user.website}>{this.props.auth.user.website}</a>
                     </div>  
                 </div>
             </div>

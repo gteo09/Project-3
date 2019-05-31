@@ -1,5 +1,7 @@
+const User = require("./user")
+
 module.exports = (sequelize, DataTypes) => {
-    var Farms = sequelize.define("Farms", {
+    var Farms = sequelize.define("oldFarms", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
