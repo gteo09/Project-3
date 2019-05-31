@@ -184,12 +184,11 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     color: #222;
     font-family: Poppins;
     font-size: 36px; }
-   
-  .mainlogin {
-    padding-top: 100px;
-    margin-bottom: -80px;
-  }
   
+  .main {
+    padding-bottom: 100px;
+  }
+
   .logprops {
     background-color: rgb(255, 255, 255);
     box-shadow: 10px 10px 5px  rgba(0,0,0,0.6);
@@ -204,7 +203,6 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     opacity: 10px;
     background: none !important;
 }
-
 
   
   .clear {
@@ -231,7 +229,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     -o-border-radius: 20px;
-    -ms-border-radius: 20px; }
+    -ms-border-radius: 20px; 
+}
   
   .display-flex {
     justify-content: space-between;

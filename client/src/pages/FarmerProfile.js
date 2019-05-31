@@ -73,38 +73,35 @@ getCoords(address){
 render(){       
     return(
         <div>
-            {/* <Navbar /> */}
-                <div className = "container-fluid" id="contact">
-                    <div className ="row" >
-                        <div className="col-sm">
-                            <h1>{this.state.name}</h1>
-                            <p>Address: {this.state.address}</p>
-                            <p>Phone: {this.state.phoneNumber}</p>
-                            <p>Website: <a href={this.state.website} target="_blank" rel="noopener noreferrer">{this.state.website}</a></p>
-                        </div>   
-                    </div>
+            <div className = "container-fluid farminfo" id="contact">
+                <div className ="row farmerprops" >
+                    <div className="col-sm">
+                        <h1>{this.state.name}</h1>
+                        <p>Address: {this.state.address}</p>
+                        <p>Phone: {this.state.phoneNumber}</p>
+                        <p>Website: <a href={this.state.website} target="_blank" rel="noopener noreferrer">{this.state.website}</a></p>
+                    </div>   
                 </div>
-                <div className="container-fluid">
-                    <div className = "row">
-                        <div className="col-3">
-                            <Map lat={this.state.location.lat} lng={this.state.location.lng} name={this.state.name} />
-                        </div>
-                        <div className="col-2">
-                        </div>
-                        <div className="col-6" id="provalues">
-                            <h1>Our Values</h1>
-                                <p>{this.state.description}</p>
-                                Products Currently Available
-                                <p>{this.state.products}</p>
-                                {/* <List>
-                                    {this.state.profile.products.map(product=>(
-                                        <ListItem key={product.id} color={product.color} name={product.name}>
-                                        </ListItem>
-                                    ))}    
-                                </List> */}
-                        </div>               
+            </div>
+            <div className="container-fluid ourvalues">
+                <div className ="row farmerprops">
+                    <div className="col-lg-6 col-12 mapprops">
+                        <Map lat={this.state.location.lat} lng={this.state.location.lng} name={this.state.name} className="" />
                     </div>
+                    <div className="col-lg-6 col-12" id="provalues">
+                        <h1>Our Values</h1>
+                            <p>{this.state.description}</p>
+                            Products Currently Available
+                            <p>{this.state.products}</p>
+                            {/* <List>
+                                {this.state.profile.products.map(product=>(
+                                    <ListItem key={product.id} color={product.color} name={product.name}>
+                                    </ListItem>
+                                ))}    
+                            </List> */}
+                    </div>               
                 </div>
+            </div>
         </div>
         )
     }

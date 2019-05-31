@@ -6,7 +6,7 @@ import Justin from "../../images/justin.jpg";
 const AboutUs = () => (
     <div className="main aboutusmain">
         <section className="signup">
-            <div className="container">
+            <div className="container aboutcontainer">
             <div class="row boxprops">
                 <div class="col-sm-12 col-md-12 col-lg-12"><h1>About Us</h1></div>
                 <div class="w-100"></div>
