@@ -11,14 +11,11 @@ body, html {
     background-size: cover;
 }
 
-.jumbotron {
+/* .jumbotron {
     background-image: url('../src/images/animals.jpg');
     font: black;
-}
+} */
 
-.lead {
-    font: black !important;
-}
 
 a:link, a:visited {
     color: rgba(116, 17, 17, 0.329);

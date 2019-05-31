@@ -38,9 +38,11 @@ const Footer = () => (
                         </ul>
                     </div>
                 </div>
-            <div className="footer-copyright text-center py-3" id="footercopywright">© 2019 Copyright:
-                <p>Gabriel Teotonio and Justin Graffeo</p>
-            </div>
+        </footer>
+        <footer className="footer">
+                <div className=" container">
+                    <p className="footer-copyright text-center" id="footercopywright">© 2019 Copyright: Gabriel Teotonio and Justin Graffeo</p>
+                </div>
         </footer>
     </div>
 )
