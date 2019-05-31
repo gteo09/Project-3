@@ -78,7 +78,6 @@ render(){
                     <div className ="row" >
                         <div className="col-sm">
                             <h1>{this.state.name}</h1>
-                            <h1>this.state.profile.image</h1>
                             <p>Address: {this.state.address}</p>
                             <p>Phone: {this.state.phoneNumber}</p>
                             <p>Website: <a href={this.state.website} target="_blank" rel="noopener noreferrer">{this.state.website}</a></p>

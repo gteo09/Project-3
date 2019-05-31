@@ -32,27 +32,46 @@ router.post("/api/register", (req, res)=> {
   console.log(req.body);
 
   const { errors, isValid } = validateRegisterInput(req.body);
+  console.log(errors, isValid);
+  
   // Check validation
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  const newUsers = new db.Users({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  })
 
   // Hash password before saving in database
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUsers.password, salt, (err, hash) => {
+  
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+      console.log(hash, '<----- hash');
+      
+      console.log(err);
+      
       if (err) throw err;
-      newUsers.password = hash;
-      newUsers 
-        .save()
-        .then(newUsers => res.json(newUsers))
+
+      const newUser = {
+        username: req.body.username,
+        email: req.body.email,
+        password: hash,
+        description: req.body.description,
+        phoneNumber: req.body.phoneNumber,
+        address: req.body.address
+      };
+
+      console.log(newUser);
+      
+
+      db.Users.create(newUser)
+
+      // // newUsers.password = hash;
+      // newUsers 
+      //   .save()
+        .then(newUsers => {
+          console.log(newUsers)
+          res.json(newUsers)
+        })
         .catch(err => console.log(err));
     });
-  });
+ 
   // db.Users.create({
   //   username: req.body.username,
   //   email: req.body.email,
@@ -104,12 +123,16 @@ router.post("/login",(req,res)=>{
   const email = req.body.email;
   const password = req.body.password;
 
-  db.Users.findOne({email}).then(user =>{
+  console.log(req.body)
+
+  db.Users.findOne({where:{email}}).then(user =>{
+    console.log(user)
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
     // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
+      console.log("ismatch", isMatch)
       console.log(password, user.password);
       if (isMatch) {
         
@@ -117,8 +140,13 @@ router.post("/login",(req,res)=>{
         //Create JWT Payload
         const payload = {
         id: user.id,
-        username: user.username
+        username: user.username,
+        description: user.description,
+        phoneNumber: user.phoneNumber,
+        address: user.address,
+        email: user.email
         };
+        console.log(payload,"<-------------")
 
         // Sign token
         jwt.sign(
