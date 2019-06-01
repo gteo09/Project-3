@@ -104,7 +104,7 @@ render(){
                         </div>
                         <div className="signup-image">
                             <figure><img src={TempImage} alt=""/></figure>
-                            <Link to="/" className="signup-image-link">I am already member</Link>
+                            <Link to="/login" className="signup-image-link">I am already member</Link>
                         </div>
                     </div>
                 </div>
