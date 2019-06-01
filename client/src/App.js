@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import FarmProfile from "./pages/FarmerProfile";
 import MyProfile from "./pages/MyProfile";
 import AllFarms from "./pages/AllFarms";
+import SavedFarms from "./pages/SavedFarms";
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import CreateProfile from "./pages/CreateProfile";
 import Example from "./pages/Example";
@@ -69,6 +70,8 @@ class App extends React.Component {
               <Route exact path="/login" component={LoginUser} />
               {/* view all producer profiles */}
               <Route exact path="/farmprofiles" component={AllFarms} />
+              {/* view saved farms */}
+              <Route exact path="/savedfarms" component={SavedFarms}/>
               {/* view specific producer profiles */}
               <Route exact path="/farmprofiles/:id" component= {FarmProfile}/>
               {/* {landing page when logged authenticated} */}
