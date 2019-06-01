@@ -1,0 +1,28 @@
+#row-home{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.jumbotron{
+    color: white
+}
+
+.lead{
+    color: white
+}
+
+img{
+    max-width:100%;
+    max-height:100%;
+}
+
+#tableimg{
+    height:608px
+}
+
+
+.jumbotron{
+    background-image: url("../../images/farm.jpg")
+}
+
