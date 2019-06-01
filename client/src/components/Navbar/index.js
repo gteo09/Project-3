@@ -32,7 +32,7 @@ class Navbar extends Component{
         return(
             <div className={this.state.scrolled ? "nav scrolled":"nav"} >
             <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top nav_text navprops" >
-                <a className="navbar-brand" href="/home"><strong>FoodChain</strong></a>
+                <a className="navbar-brand" href="/"><strong>FoodChain</strong></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

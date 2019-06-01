@@ -3,7 +3,7 @@
 // var uuidv1 = require("uuid/v1");
 const bcrypt = require("bcrypt-nodejs");
 //const Profile = require("./profile");
-const Farm = require("./farm") 
+const Farms = require("./farms") 
 //
 // Creating our User model
 //Set it as export because we will need it required on the server
@@ -55,5 +55,7 @@ module.exports = function(sequelize, DataTypes) {
     }
 
   });
+
+  
     return Users;
 }

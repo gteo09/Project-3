@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt-nodejs");
+//const User = require("./user");
 
 module.exports = (sequelize, DataTypes) => {
     var Farms = sequelize.define("Farms", {
@@ -43,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [1, 100]
             }
-        },  
+        }
     });
     
     return Farms;
