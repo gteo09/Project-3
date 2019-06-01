@@ -4,9 +4,9 @@ import {List, ListItem} from "../components/List";
 import Navbar from "../components/Navbar";
 import API from "../utils/API";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import "./pageStyles/allfarms.css"
+import "./pageStyles/savedfarms.css"
 
-class AllFarms extends Component {
+class SavedFarms extends Component {
 
     state = {
         //empty object to be filled by api call to database
@@ -57,18 +57,14 @@ class AllFarms extends Component {
 render(){       
     return(
         <div class="something">
-        <div className="allfarmborder container-fluid">
-            <div className ="row allfarmsprops">
-                <div className="col-lg-6 col-12 mapprops">    
-                {/* map will display farm locations and have clickable markers with infowindows */}
-                    <Map  />
-                </div>
-                <div className="col-lg-6 col-12">
-                <h1>Farms in our Database</h1>
+        <div className="savedborder container-fluid">
+            <div className ="row savedprops">
+                <div className="col-lg-12 col-12">
+                <h1>Saved Farms To Contact</h1>
                     {this.state.farms.length ? (
                         <List>
                             {this.state.farms.map(farm=>(
-                                <ListItem key={farm.id}  className="avoidoverflow">
+                                <ListItem key={farm.id}>
                                     <Link to={"/farmprofiles/"+farm.id}>{farm.name}</Link>
                                     <p>{farm.address}</p>
                                     <a href = {farm.website} target="_blank" rel="noopener noreferrer" className="avoidoverflow inlineblock">{farm.website}</a>
@@ -86,4 +82,4 @@ render(){
     }
 }
 
-export default AllFarms;
+export default SavedFarms;

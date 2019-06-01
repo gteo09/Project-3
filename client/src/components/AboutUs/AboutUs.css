@@ -603,5 +603,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       margin-right: 0px;
       margin-bottom: 10px; } }
 
+
+  .fcdescription {  
+    padding-top: 10px;
+  }
   /*# sourceMappingURL=style.css.map */
   

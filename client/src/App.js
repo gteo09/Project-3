@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import FarmProfile from "./pages/FarmerProfile";
 import MyProfile from "./pages/MyProfile";
 import AllFarms from "./pages/AllFarms";
+import SavedFarms from "./pages/SavedFarms";
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import AboutUsPage from "./pages/AboutUsPage"; 
 import Animals from "../src/images/animals.jpg";
@@ -64,6 +65,8 @@ class App extends React.Component {
               <Route exact path="/login" component={LoginUser} />
               {/* view all producer profiles */}
               <Route exact path="/farmprofiles" component={AllFarms} />
+              {/* view saved farms */}
+              <Route exact path="/savedfarms" component={SavedFarms}/>
               {/* view specific producer profiles */}
               <Route exact path="/farmprofiles/:id" component= {FarmProfile}/> 
               {/*Example to mess with*/}

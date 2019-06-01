@@ -24,7 +24,7 @@ const Footer = () => (
                         <h5 className="text-uppercase">Links</h5>
                         <ul className="list-unstyled">
                             <li>
-                            <Link to="/profiles/:id" className="linkprops">Your Profile</Link>
+                            <Link to="/privateprofile" className="linkprops">Your Profile</Link>
                             </li>
                             <li>
                             <Link to="/farmprofiles" className="linkprops">Browse Farms</Link>
