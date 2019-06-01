@@ -41,7 +41,7 @@ if (localStorage.jwtToken) {
       store.dispatch(logoutUser());
   
       // Redirect to login
-      window.location.href = "/";
+      window.location.href = "/login";
     }
 }
 
@@ -61,14 +61,13 @@ class App extends React.Component {
             <Switch>
             <div style={this.sectionStyle} className="backgroundimage">
               {/* intro to website, link to login form */}
-              <Route exact path="/" component={LoginUser} />
+              <Route exact path="/" component={Home} />
               {/* view all producer profiles */}
                 <Route exact path="/createprofile" component= {CreateProfile}/>
               {/*registering new user*/}
               <Route exact path="/register" component={RegisterUser} />
-              {/*registering new user*/}
-              <Route exact path="/home" component={Home} />
               {/* login page */}
+              <Route exact path="/login" component={LoginUser} />
               {/* view all producer profiles */}
               <Route exact path="/farmprofiles" component={AllFarms} />
               {/* view saved farms */}
@@ -87,7 +86,7 @@ class App extends React.Component {
               <PrivateRoute exact path ="/privateprofile" component={MyProfile}></PrivateRoute>
               </div>
             </Switch>
-            <Footer/>
+        <Footer/>
         </Router>
       </React.Fragment>
     </Provider>

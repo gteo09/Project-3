@@ -14,7 +14,8 @@ class Register extends React.Component {
         password2:"",
         description:"",
         phoneNumber:"",
-        address:""
+        address:"",
+        website:""
     }
 
     handleInputChange = event => {
@@ -28,7 +29,14 @@ class Register extends React.Component {
     handleFormSubmit = event =>{
         event.preventDefault();
 
-        if(this.state.username && this.state.email && this.state.password && this.state.password2){
+        if(this.state.username && 
+           this.state.email && 
+           this.state.password && 
+           this.state.password2 &&
+           this.state.description &&
+           this.state.phoneNumber &&
+           this.state.address &&
+           this.state.website){
             API.registerUser({
                 username: this.state.username,
                 password: this.state.password,
@@ -36,11 +44,10 @@ class Register extends React.Component {
                 password2: this.state.password2,
                 description: this.state.description,
                 phoneNumber: this.state.phoneNumber,
-                address: this.state.address
+                address: this.state.address,
+                website: this.state.website
             }).then(res=>{
-                console.log(res);
-                
-
+                window.location.assign("/")
             }).catch(err=>{
                 console.log(err);
             })
@@ -85,6 +92,10 @@ render(){
                                 <div className="form-group">
                                     <label for="description"><i className="zmdi zmdi-account material-icons-name"></i></label>
                                     <input type="text" name="description" id="re_pass" placeholder="Business Description" value={this.state.description} onChange={this.handleInputChange}/>
+                                </div>
+                                <div className="form-group">
+                                    <label for="description"><i className="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="website" id="re_pass" placeholder="Website(eg, www.business.com)" value={this.state.website} onChange={this.handleInputChange}/>
                                 </div>
                                 <div className="form-group form-button">
                                     <input type="submit" name="register" id="signup" className="form-submit" value="Register" onClick={this.handleFormSubmit}/>
