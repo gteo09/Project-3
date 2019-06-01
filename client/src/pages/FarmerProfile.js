@@ -72,14 +72,19 @@ getCoords(address){
 
 render(){       
     return(
-        <div>
-            <div className = "container-fluid farminfo" id="contact">
+        <div class="mainmargin">
+            <div className ="container-fluid farminfo" id="contact">
                 <div className ="row farmerprops" >
-                    <div className="col-sm">
+                    <div className="col-sm inlineblock">
                         <h1>{this.state.name}</h1>
                         <p>Address: {this.state.address}</p>
                         <p>Phone: {this.state.phoneNumber}</p>
                         <p>Website: <a href={this.state.website} target="_blank" rel="noopener noreferrer">{this.state.website}</a></p>
+
+                        <div className="form-group form-button">
+                            <a type="button" href="/savedfarms" name="register" id="signup" className="btn form-submit" value="Add Farm">Add Farm</a>
+                        </div>
+
                     </div>   
                 </div>
             </div>
