@@ -7,6 +7,7 @@
     border-radius: 15px;
     border: solid 1px rgba(0,0,0,0.6);
     padding: 15px 20px 15px 20px;
+    margin-top: 40px;
 }
 
 .profilecontainer {
@@ -15,7 +16,7 @@
 }
 
 .profileborder {
-    /* margin-top: 50px; */
     margin-bottom: 100px;
+    padding: 30px 20px 50px 20px;
     font-family: 'Vollkorn', serif;
 }
