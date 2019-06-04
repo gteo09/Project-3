@@ -55,7 +55,7 @@ class Navbar extends Component{
                         </Link>    
                     </li>
                     <li className="nav-item" id="navtext">   
-                        <Link to="/home" onClick={this.props.logoutUser}> <button className="btn btn-outline-primary link">Log Out</button>
+                        <Link to="/" onClick={this.props.logoutUser}> <button className="btn btn-outline-primary link">Log Out</button>
                         </Link>
                     </li>
                     </ul>

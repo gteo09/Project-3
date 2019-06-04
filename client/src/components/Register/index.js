@@ -47,7 +47,7 @@ class Register extends React.Component {
                 address: this.state.address,
                 website: this.state.website
             }).then(res=>{
-                window.location.assign("/")
+                window.location.assign("/login")
             }).catch(err=>{
                 console.log(err);
             })
