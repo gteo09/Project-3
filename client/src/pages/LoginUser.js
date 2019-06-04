@@ -53,6 +53,8 @@ class LoginUser extends Component {
       password: this.state.password
     };
 
+    //window.location.assign("/privateprofile")
+
     this.props.loginUser(userData);
   };
 

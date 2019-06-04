@@ -5,6 +5,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const userRouter = require('./routes/api-routes');
 const cors = require("cors");
+const connection = require("./config/database")
 // Requiring passport as we've configured it
 var passport = require("passport");
 
@@ -56,6 +57,12 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }  
 
+if(process.env.JAWSDB_URL){
+  connection=mysql.createConnection(process.env.JAWSDB_URL)
+
+}else{
+  connection;
+}
 
 // Syncing our database and logging a message to the user upon success - Uncomment to see error in terminal
 db.sequelize.sync(syncOptions).then(function() {

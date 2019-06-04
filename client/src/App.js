@@ -11,7 +11,6 @@ import SavedFarms from "./pages/SavedFarms";
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import AboutUsPage from "./pages/AboutUsPage"; 
 import Animals from "../src/images/animals.jpg";
-import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import setAuthToken from "../src/utils/setAuthToken";
@@ -71,8 +70,6 @@ class App extends React.Component {
               <Route exact path="/farmprofiles/:id" component= {FarmProfile}/> 
               {/*Example to mess with*/}
               <Route exact path="/aboutus" component={AboutUsPage}/>      
-              {/* <Route component={NotFound} /> */}
-              <Route exact path ="/*" component={NotFound}/>
               <PrivateRoute exact path ="/privateprofile" component={MyProfile}></PrivateRoute>
               </div>
             </Switch>
