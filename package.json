@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/gteo09/Project-3/issues"
   },
-  "homepage": "https://github.com/gteo09/Project-3#readme",
+  "homepage": "https://food-chain2.herokuapp.com/",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
