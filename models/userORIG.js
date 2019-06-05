@@ -2,7 +2,7 @@
 //the regular bcrypt module sometimes causes errors on Windows machines
 // var uuidv1 = require("uuid/v1");
 const bcrypt = require("bcrypt-nodejs");
-const Profile = require("./profile");
+//const Profile = require("./profile");
 
 //
 // Creating our User model
@@ -39,10 +39,10 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-  Users.associate = models => {
-    Users.hasOne(models.ProfileInfo, 
-      // {foreignKey: 'ownerUuid'});
-    )}
+  // Users.associate = models => {
+  //   Users.hasOne(models.ProfileInfo, 
+  //     // {foreignKey: 'ownerUuid'});
+  //   )}
   // User.findAll({
   //   include: [{model: model.profile, as: 'profile'}]
   // }).then(function(result) {
