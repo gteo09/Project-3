@@ -25,7 +25,7 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static("client/build"));
 
 // We need to use sessions to keep track of our user's login status
 app.use(session({ 
