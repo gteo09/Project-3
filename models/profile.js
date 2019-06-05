@@ -47,11 +47,11 @@ module.exports = (sequelize, DataTypes) => {
         }    
     });
     
-    ProfileInfos.associate = models => {
-        ProfileInfos.belongsTo(models.Users) 
-            // foreignKey: 'ownerUuid'
-        // { foreignKey: 'id'})
-    };
+    // ProfileInfos.associate = models => {
+    //     ProfileInfos.belongsTo(models.Users) 
+    //         // foreignKey: 'ownerUuid'
+    //     // { foreignKey: 'id'})
+    // };
     
     return ProfileInfos;
 };
