@@ -9,7 +9,7 @@ const mysql = require("mysql");
 
 module.exports = function(app, passport) {
   app.get("/", function(req, res) {
-    res.render(""); //what are we rendering
+    console.log("test") //what are we rendering
   });
 
   // app.get("/login", function (req,res){
@@ -36,9 +36,9 @@ module.exports = function(app, passport) {
   //     res.redirect("/");
   //   });
 
-    app.get("/register", function(req, res) {
-      res.render("", {message: req.flash("signupMessage")}); //where?
-    });
+    // app.get("/register", function(req, res) {
+    //   res.render("", {message: req.flash("signupMessage")}); //where?
+    // });
 
     // app.post("/register", passport.authenticate("local-signup", {
     //   successRedirect: "/createprofile", // create profile page
