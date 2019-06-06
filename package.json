@@ -3,19 +3,16 @@
   "version": "1.0.0",
   "description": "Testing again",
   "main": "server.js",
+  "homepage": "https://food-chain2.herokuapp.com/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gteo09/Project-3.git"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gteo09/Project-3/issues"
-  },
-  "homepage": "https://food-chain2.herokuapp.com/",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
@@ -42,4 +39,5 @@
   "engines":{
     "node":"10.15.1"
   }
+
 }
