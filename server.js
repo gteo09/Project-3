@@ -1,4 +1,5 @@
 // Requiring necessary npm packages
+const path = require("path")
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
@@ -25,7 +26,12 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("client/build"));
+
+if(process.env.NODE_ENV==="production"){
+  app.use(express.static("client/build"))
+}else{
+  app.use(express.static("client/public"))
+}
 
 // We need to use sessions to keep track of our user's login status
 app.use(session({ 
@@ -73,6 +79,9 @@ if(process.env.JAWSDB_URL){
 
 }
 
+app.use((req, res)=>{
+  res.sendFile(path.join(__dirname,"./client/build/index.html"))
+})
 
 // Syncing our database and logging a message to the user upon success - Uncomment to see error in terminal
 db.sequelize.sync(syncOptions).then(function() {
