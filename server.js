@@ -6,7 +6,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const userRouter = require('./routes/api-routes');
 const cors = require("cors");
-var connection
+var connection;
 // require("./config/database")
 // Requiring passport as we've configured it
 var passport = require("passport");
