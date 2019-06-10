@@ -79,8 +79,11 @@ if(process.env.JAWSDB_URL){
 
 }
 
-app.use((req, res)=>{
-  res.sendFile(path.join(__dirname,"./client/build/index.html"))
+app.get('*', (req, res) => {
+
+  const index = path.join(__dirname, 'client', 'build', 'index.html')
+
+  res.sendFile(index);
 })
 
 // Syncing our database and logging a message to the user upon success - Uncomment to see error in terminal
