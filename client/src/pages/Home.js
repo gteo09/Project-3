@@ -1,7 +1,6 @@
 import React from "react";
 import "./pageStyles/home.css"
 import vegetables from "../images/vegetables.jpg";
-import farm from "../images/farm.jpg";
 import table from "../images/table.jpg"
 import agriculture from "../images/agriculture.jpg"
 
@@ -32,7 +31,7 @@ const Home =()=>{
                         <img src={agriculture} classNme="card-img-top cardimg" alt="agriculture"></img>
                         <div className="card-body">
                             <h5 className="card-title">Browse</h5>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p className="card-text">Check out what producers are currently signed up and find their location!</p>
                             <a href="/farmprofiles" className="btn btn-primary">Check Out Producers</a>
                         </div>
                     </div>
